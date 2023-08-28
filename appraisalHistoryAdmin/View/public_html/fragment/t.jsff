@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelFormLayout id="pfl1">
+    <af:inputText value="#{bindings.AppraisalComments.inputValue}" label="#{bindings.AppraisalComments.hints.label}"
+                  required="#{bindings.AppraisalComments.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.AppraisalComments.hints.displayWidth}"
+                  maximumLength="#{bindings.AppraisalComments.hints.precision}"
+                  shortDesc="#{bindings.AppraisalComments.hints.tooltip}" id="it1">
+      <f:validator binding="#{bindings.AppraisalComments.validator}"/>
+    </af:inputText>
+    <af:inputDate value="#{bindings.AppraisalDate.inputValue}" readOnly="true"
+                  label="#{bindings.AppraisalDate.hints.label}" required="#{bindings.AppraisalDate.hints.mandatory}"
+                  columns="#{bindings.AppraisalDate.hints.displayWidth}"
+                  shortDesc="#{bindings.AppraisalDate.hints.tooltip}" id="id1">
+      <f:validator binding="#{bindings.AppraisalDate.validator}"/>
+      <af:convertDateTime pattern="#{bindings.AppraisalDate.format}"/>
+    </af:inputDate>
+    <af:inputText value="#{bindings.AppraisalFeedback.inputValue}" label="#{bindings.AppraisalFeedback.hints.label}"
+                  required="#{bindings.AppraisalFeedback.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.AppraisalFeedback.hints.displayWidth}"
+                  maximumLength="#{bindings.AppraisalFeedback.hints.precision}"
+                  shortDesc="#{bindings.AppraisalFeedback.hints.tooltip}" id="it2">
+      <f:validator binding="#{bindings.AppraisalFeedback.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.AppraisalHistHdrId.inputValue}" label="#{bindings.AppraisalHistHdrId.hints.label}"
+                  required="#{bindings.AppraisalHistHdrId.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.AppraisalHistHdrId.hints.displayWidth}"
+                  maximumLength="#{bindings.AppraisalHistHdrId.hints.precision}"
+                  shortDesc="#{bindings.AppraisalHistHdrId.hints.tooltip}" id="it3">
+      <f:validator binding="#{bindings.AppraisalHistHdrId.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.AppraisalHistHdrId.format}"/>
+    </af:inputText>
+    <af:inputDate value="#{bindings.AppraisalPeriodEndDate.inputValue}" readOnly="true"
+                  label="#{bindings.AppraisalPeriodEndDate.hints.label}"
+                  required="#{bindings.AppraisalPeriodEndDate.hints.mandatory}"
+                  columns="#{bindings.AppraisalPeriodEndDate.hints.displayWidth}"
+                  shortDesc="#{bindings.AppraisalPeriodEndDate.hints.tooltip}" id="id2">
+      <f:validator binding="#{bindings.AppraisalPeriodEndDate.validator}"/>
+      <af:convertDateTime pattern="#{bindings.AppraisalPeriodEndDate.format}"/>
+    </af:inputDate>
+    <af:inputDate value="#{bindings.AppraisalPeriodStartDate.inputValue}" readOnly="true"
+                  label="#{bindings.AppraisalPeriodStartDate.hints.label}"
+                  required="#{bindings.AppraisalPeriodStartDate.hints.mandatory}"
+                  columns="#{bindings.AppraisalPeriodStartDate.hints.displayWidth}"
+                  shortDesc="#{bindings.AppraisalPeriodStartDate.hints.tooltip}" id="id3">
+      <f:validator binding="#{bindings.AppraisalPeriodStartDate.validator}"/>
+      <af:convertDateTime pattern="#{bindings.AppraisalPeriodStartDate.format}"/>
+    </af:inputDate>
+    <af:inputText value="#{bindings.AppraisalPurpose.inputValue}" label="#{bindings.AppraisalPurpose.hints.label}"
+                  required="#{bindings.AppraisalPurpose.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.AppraisalPurpose.hints.displayWidth}"
+                  maximumLength="#{bindings.AppraisalPurpose.hints.precision}"
+                  shortDesc="#{bindings.AppraisalPurpose.hints.tooltip}" id="it4">
+      <f:validator binding="#{bindings.AppraisalPurpose.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.BusinessGroupName.inputValue}" label="#{bindings.BusinessGroupName.hints.label}"
+                  required="#{bindings.BusinessGroupName.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.BusinessGroupName.hints.displayWidth}"
+                  maximumLength="#{bindings.BusinessGroupName.hints.precision}"
+                  shortDesc="#{bindings.BusinessGroupName.hints.tooltip}" id="it5">
+      <f:validator binding="#{bindings.BusinessGroupName.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Initiator.inputValue}" label="#{bindings.Initiator.hints.label}"
+                  required="#{bindings.Initiator.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.Initiator.hints.displayWidth}"
+                  maximumLength="#{bindings.Initiator.hints.precision}" shortDesc="#{bindings.Initiator.hints.tooltip}"
+                  id="it6">
+      <f:validator binding="#{bindings.Initiator.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.OverallRating.inputValue}" label="#{bindings.OverallRating.hints.label}"
+                  required="#{bindings.OverallRating.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.OverallRating.hints.displayWidth}"
+                  maximumLength="#{bindings.OverallRating.hints.precision}"
+                  shortDesc="#{bindings.OverallRating.hints.tooltip}" id="it7">
+      <f:validator binding="#{bindings.OverallRating.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.PersonId.inputValue}" label="#{bindings.PersonId.hints.label}"
+                  required="#{bindings.PersonId.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.PersonId.hints.displayWidth}" maximumLength="#{bindings.PersonId.hints.precision}"
+                  shortDesc="#{bindings.PersonId.hints.tooltip}" id="it8">
+      <f:validator binding="#{bindings.PersonId.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.PersonId.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.SuggestedFinalRating.inputValue}"
+                  label="#{bindings.SuggestedFinalRating.hints.label}"
+                  required="#{bindings.SuggestedFinalRating.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.SuggestedFinalRating.hints.displayWidth}"
+                  maximumLength="#{bindings.SuggestedFinalRating.hints.precision}"
+                  shortDesc="#{bindings.SuggestedFinalRating.hints.tooltip}" id="it9">
+      <f:validator binding="#{bindings.SuggestedFinalRating.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.SuggestedFinalRating.format}"/>
+    </af:inputText>
+    <af:selectOneChoice value="#{bindings.EmployeeNumber.inputValue}" label="#{bindings.EmployeeNumber.label}"
+                        required="#{bindings.EmployeeNumber.hints.mandatory}"
+                        shortDesc="#{bindings.EmployeeNumber.hints.tooltip}" readOnly="true" id="soc1">
+      <f:selectItems value="#{bindings.EmployeeNumber.items}" id="si1"/>
+      <f:validator binding="#{bindings.EmployeeNumber.validator}"/>
+    </af:selectOneChoice>
+    <af:selectOneChoice value="#{bindings.PlanName.inputValue}" label="#{bindings.PlanName.label}"
+                        required="#{bindings.PlanName.hints.mandatory}" shortDesc="#{bindings.PlanName.hints.tooltip}"
+                        readOnly="true" id="soc2">
+      <f:selectItems value="#{bindings.PlanName.items}" id="si2"/>
+      <f:validator binding="#{bindings.PlanName.validator}"/>
+    </af:selectOneChoice>
+    <af:inputText value="#{bindings.AppraiseeName.inputValue}" label="#{bindings.AppraiseeName.hints.label}"
+                  required="#{bindings.AppraiseeName.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.AppraiseeName.hints.displayWidth}"
+                  maximumLength="#{bindings.AppraiseeName.hints.precision}"
+                  shortDesc="#{bindings.AppraiseeName.hints.tooltip}" id="it10">
+      <f:validator binding="#{bindings.AppraiseeName.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.EmployeeType.inputValue}" label="#{bindings.EmployeeType.hints.label}"
+                  required="#{bindings.EmployeeType.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.EmployeeType.hints.displayWidth}"
+                  maximumLength="#{bindings.EmployeeType.hints.precision}"
+                  shortDesc="#{bindings.EmployeeType.hints.tooltip}" id="it11">
+      <f:validator binding="#{bindings.EmployeeType.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.HistoricalType.inputValue}" label="#{bindings.HistoricalType.hints.label}"
+                  required="#{bindings.HistoricalType.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.HistoricalType.hints.displayWidth}"
+                  maximumLength="#{bindings.HistoricalType.hints.precision}"
+                  shortDesc="#{bindings.HistoricalType.hints.tooltip}" id="it12">
+      <f:validator binding="#{bindings.HistoricalType.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.MainAppraiserId.inputValue}" label="#{bindings.MainAppraiserId.hints.label}"
+                  required="#{bindings.MainAppraiserId.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.MainAppraiserId.hints.displayWidth}"
+                  maximumLength="#{bindings.MainAppraiserId.hints.precision}"
+                  shortDesc="#{bindings.MainAppraiserId.hints.tooltip}" id="it13">
+      <f:validator binding="#{bindings.MainAppraiserId.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.MainAppraiserId.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.DisplayName.inputValue}" label="#{bindings.DisplayName.hints.label}"
+                  required="#{bindings.DisplayName.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.DisplayName.hints.displayWidth}"
+                  maximumLength="#{bindings.DisplayName.hints.precision}"
+                  shortDesc="#{bindings.DisplayName.hints.tooltip}" id="it14">
+      <f:validator binding="#{bindings.DisplayName.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.PersonNumber.inputValue}" label="#{bindings.PersonNumber.hints.label}"
+                  required="#{bindings.PersonNumber.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.PersonNumber.hints.displayWidth}"
+                  maximumLength="#{bindings.PersonNumber.hints.precision}"
+                  shortDesc="#{bindings.PersonNumber.hints.tooltip}" id="it15">
+      <f:validator binding="#{bindings.PersonNumber.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.BusinessUnitName.inputValue}" label="#{bindings.BusinessUnitName.hints.label}"
+                  required="#{bindings.BusinessUnitName.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.BusinessUnitName.hints.displayWidth}"
+                  maximumLength="#{bindings.BusinessUnitName.hints.precision}"
+                  shortDesc="#{bindings.BusinessUnitName.hints.tooltip}" id="it16">
+      <f:validator binding="#{bindings.BusinessUnitName.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.EmailAddress.inputValue}" label="#{bindings.EmailAddress.hints.label}"
+                  required="#{bindings.EmailAddress.hints.mandatory}" readOnly="true"
+                  columns="#{bindings.EmailAddress.hints.displayWidth}"
+                  maximumLength="#{bindings.EmailAddress.hints.precision}"
+                  shortDesc="#{bindings.EmailAddress.hints.tooltip}" id="it17">
+      <f:validator binding="#{bindings.EmailAddress.validator}"/>
+    </af:inputText>
+  </af:panelFormLayout>
+</ui:composition>

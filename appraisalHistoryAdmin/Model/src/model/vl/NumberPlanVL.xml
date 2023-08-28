@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="NumberPlanVL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.vl.NumberPlanVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="AppraisalHistHdr_V_ROVO"
+    Cardinality="1"
+    Source="true"
+    Owner="model.ro.AppraisalHistHdr_V_ROVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="AppraisalHistHdr_V_ROVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.ro.AppraisalHistHdr_V_ROVO.PlanName"/>
+      <Item Value="model.ro.AppraisalHistHdr_V_ROVO.EmployeeNumber"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ApprisalHisLine_VO1"
+    Cardinality="-1"
+    Owner="model.vo.ApprisalHisLine_VO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ApprisalHisLine_VO1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.vo.ApprisalHisLine_VO.ScorecardName"/>
+      <Item Value="model.vo.ApprisalHisLine_VO.EmployeeNumber"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

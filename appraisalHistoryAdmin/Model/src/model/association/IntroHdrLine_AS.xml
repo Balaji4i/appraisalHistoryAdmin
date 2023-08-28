@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="IntroHdrLine_AS"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="IntroLtrHdr_EO"
+    Cardinality="1"
+    Source="true"
+    Owner="model.eo.IntroLtrHdr_EO"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="IntroLtrHdr_EO"/>
+      <Attr Name="_foreignKey" Value="model.eo.IntroLtrHdr_EO.IntroltrhdrEoPrimaryKey"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.IntroLtrHdr_EO.IntroLtrHdrId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="IntroLtrLines_EO"
+    Cardinality="-1"
+    Owner="model.eo.IntroLtrLines_EO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="IntroLtrLines_EO"/>
+      <Attr Name="_foreignKey" Value="model.eo.IntroLtrLines_EO.fk_IntroLtrLines_EO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.eo.IntroLtrLines_EO.IntroLtrHdrId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

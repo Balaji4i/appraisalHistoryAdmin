@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="testPageDef"
+                Package="fragmenpage">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ApprisalHisHdr_VO" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="ApprisalHisHdr_VOIterator"/>
+    <searchRegion Criteria="ApprisalHisHdr_VOFilter" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="ApprisalHisHdr_VOIterator" id="ApprisalHisHdrVOFilterQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ApprisalHisHdr_VOIterator" id="ApprisalHisHdr_VO">
+      <nodeDefinition DefName="model.vo.ApprisalHisHdr_VO" Name="ApprisalHisHdr_VO0">
+        <AttrNames>
+          <Item Value="AppraisalComments"/>
+          <Item Value="AppraisalDate"/>
+          <Item Value="AppraisalFeedback"/>
+          <Item Value="AppraisalHistHdrId"/>
+          <Item Value="AppraisalPeriodEndDate"/>
+          <Item Value="AppraisalPeriodStartDate"/>
+          <Item Value="AppraisalPurpose"/>
+          <Item Value="BusinessGroupName"/>
+          <Item Value="Initiator"/>
+          <Item Value="OverallRating"/>
+          <Item Value="PersonId"/>
+          <Item Value="SuggestedFinalRating"/>
+          <Item Value="PlanName"/>
+          <Item Value="AppraiseeName"/>
+          <Item Value="EmployeeNumber"/>
+          <Item Value="EmployeeType"/>
+          <Item Value="HistoricalType"/>
+          <Item Value="MainAppraiserId"/>
+          <Item Value="DisplayName"/>
+          <Item Value="PersonNumber"/>
+          <Item Value="BusinessUnitName"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="Trans_Name"/>
+          <Item Value="Trans_No"/>
+          <Item Value="Trans_Email"/>
+          <Item Value="Trans_BusinessGroup"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

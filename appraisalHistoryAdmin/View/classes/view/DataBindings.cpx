@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.9.14" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+             <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/pages/FilmStrip.jspx" usageId="view_FilmStripPageDef"/>
+    <page path="/fragment/AddEditTravelReq.jsff" usageId="view_AddEditTravelReqPageDef"/>
+    <page path="/fragment/SearchTravelReq.jsff" usageId="view_SearchTravelReqPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditTravelRequest_BTF.xml#AddEditTravelRequest_BTF@CreateInsert"
+          usageId="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_CreateInsertPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditTravelRequest_BTF.xml#AddEditTravelRequest_BTF@ExecuteWithParams"
+          usageId="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchTravelReq_BTF.xml#SearchTravelReq_BTF@Execute"
+          usageId="view_SearchTravelReq_BTF_SearchTravelReq_BTF_ExecutePageDef"/>
+    <page path="/fragment/AddEditWell.jsff" usageId="view_AddEditWellPageDef"/>
+    <page path="/fragment/SearchWell.jsff" usageId="view_SearchWellPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditWellHdrDtl.xml#AddEditWellHdrDtl@ExecuteWithParams"
+          usageId="view_AddEditWellHdrDtl_AddEditWellHdrDtl_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditWellHdrDtl.xml#AddEditWellHdrDtl@CreateInsert"
+          usageId="view_AddEditWellHdrDtl_AddEditWellHdrDtl_CreateInsertPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchWellHdrDtl_BTF.xml#SearchWellHdrDtl_BTF@Execute"
+          usageId="view_SearchWellHdrDtl_BTF_SearchWellHdrDtl_BTF_ExecutePageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditTravelRequest_BTF.xml#AddEditTravelRequest_BTF@CreateWithParameters1"
+          usageId="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_CreateWithParameters1PageDef"/>
+    <page path="/WEB-INF/taskflow/SearchTravelReq_BTF.xml#SearchTravelReq_BTF@filterUser"
+          usageId="view_SearchTravelReq_BTF_SearchTravelReq_BTF_filterUserPageDef"/>
+    <page path="/WEB-INF/taskflow/SearchApprisalHis_BTF.xml#SearchApprisalHis_BTF@filter"
+          usageId="view_SearchApprisalHis_BTF_SearchApprisalHis_BTF_filterPageDef"/>
+    <page path="/fragment/SearchApprisalHis.jsff" usageId="view_SearchApprisalHisPageDef"/>
+    <page path="/fragment/AddEditApprisalHis.jsff" usageId="view_AddEditApprisalHisPageDef"/>
+    <page path="/fragmenpage/test.jsf" usageId="view_testPageDef"/>
+    <page path="/fragmenpage/t.jsf" usageId="view_tPageDef"/>
+    <page path="/fragment/Search.jsff" usageId="view_SearchPageDef"/>
+    <page path="/WEB-INF/taskflow/AddEditApprisalHis_BTF.xml#AddEditApprisalHis_BTF@ExecuteWithParams1"
+          usageId="view_AddEditApprisalHis_BTF_AddEditApprisalHis_BTF_ExecuteWithParams1PageDef"/>
+    <page path="/fragment/t.jsff" usageId="view_tPageDef1"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_FilmStripPageDef" path="pages.FilmStripPageDef"/>
+    <page id="view_AddEditTravelReqPageDef" path="fragment.AddEditTravelReqPageDef"/>
+    <page id="view_SearchTravelReqPageDef" path="fragment.SearchTravelReqPageDef"/>
+    <page id="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_CreateInsertPageDef"
+          path="taskflow.AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_CreateInsertPageDef"/>
+    <page id="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_ExecuteWithParamsPageDef"
+          path="taskflow.AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_ExecuteWithParamsPageDef"/>
+    <page id="view_SearchTravelReq_BTF_SearchTravelReq_BTF_ExecutePageDef"
+          path="taskflow.SearchTravelReq_BTF_SearchTravelReq_BTF_ExecutePageDef"/>
+    <page id="view_AddEditWellPageDef" path="fragment.AddEditWellPageDef"/>
+    <page id="view_SearchWellPageDef" path="fragment.SearchWellPageDef"/>
+    <page id="view_AddEditWellHdrDtl_AddEditWellHdrDtl_ExecuteWithParamsPageDef"
+          path="taskflow.AddEditWellHdrDtl_AddEditWellHdrDtl_ExecuteWithParamsPageDef"/>
+    <page id="view_AddEditWellHdrDtl_AddEditWellHdrDtl_CreateInsertPageDef"
+          path="taskflow.AddEditWellHdrDtl_AddEditWellHdrDtl_CreateInsertPageDef"/>
+    <page id="view_SearchWellHdrDtl_BTF_SearchWellHdrDtl_BTF_ExecutePageDef"
+          path="taskflow.SearchWellHdrDtl_BTF_SearchWellHdrDtl_BTF_ExecutePageDef"/>
+    <page id="view_AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_CreateWithParameters1PageDef"
+          path="taskflow.AddEditTravelRequest_BTF_AddEditTravelRequest_BTF_CreateWithParameters1PageDef"/>
+    <page id="view_SearchTravelReq_BTF_SearchTravelReq_BTF_filterUserPageDef"
+          path="taskflow.SearchTravelReq_BTF_SearchTravelReq_BTF_filterUserPageDef"/>
+    <page id="view_SearchApprisalHis_BTF_SearchApprisalHis_BTF_filterPageDef"
+          path="taskflow.SearchApprisalHis_BTF_SearchApprisalHis_BTF_filterPageDef"/>
+    <page id="view_SearchApprisalHisPageDef" path="fragment.SearchApprisalHisPageDef"/>
+    <page id="view_AddEditApprisalHisPageDef" path="fragment.AddEditApprisalHisPageDef"/>
+    <page id="view_testPageDef" path="fragmenpage.testPageDef"/>
+    <page id="view_tPageDef" path="fragmenpage.tPageDef"/>
+    <page id="view_SearchPageDef" path="fragment.SearchPageDef"/>
+    <page id="view_AddEditApprisalHis_BTF_AddEditApprisalHis_BTF_ExecuteWithParams1PageDef"
+          path="taskflow.AddEditApprisalHis_BTF_AddEditApprisalHis_BTF_ExecuteWithParams1PageDef"/>
+    <page id="view_tPageDef1" path="fragment.tPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="Oando_AMDataControl" Package="model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="Oando_AMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

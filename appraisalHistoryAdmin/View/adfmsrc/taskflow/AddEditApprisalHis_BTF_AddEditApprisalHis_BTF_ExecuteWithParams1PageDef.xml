@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="AddEditApprisalHis_BTF_AddEditApprisalHis_BTF_ExecuteWithParams1PageDef" Package="taskflow"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="AppraisalHistHdr_V_ROVO1" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="AppraisalHistHdr_V_ROVO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="BEmpNumber" NDValue="#{pageFlowScope.EmployeeNumber1}" NDType="java.math.BigDecimal"/>
+      <NamedData NDName="BPlanName" NDValue="#{pageFlowScope.PlanName1}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

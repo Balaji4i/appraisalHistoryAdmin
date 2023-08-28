@@ -1,0 +1,40 @@
+//Groovy Scripts for model.eo.IntroLtrHdr_EO
+
+package model.eo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="IntroLtrHdrId")
+def IntroLtrHdrId_ExpressionScript_Expression()
+{
+new oracle.jbo.server.SequenceImpl("XXSSHR_INTRO_LTR_HDR_S",adf.object.getDBTransaction()).getSequenceNumber()
+}
+
+
+@TransientValueExpression(attributeName="TravelRequestNo")
+def TravelRequestNo_ExpressionScript_Expression()
+{
+IntroLtrHdrId
+}
+
+
+@TransientValueExpression(attributeName="CreatedBy")
+def CreatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="LastUpdatedBy")
+def LastUpdatedBy_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+
+
+@TransientValueExpression(attributeName="LastUpdateLogin")
+def LastUpdateLogin_ExpressionScript_Expression()
+{
+adf.context.sessionScope.userName
+}
+

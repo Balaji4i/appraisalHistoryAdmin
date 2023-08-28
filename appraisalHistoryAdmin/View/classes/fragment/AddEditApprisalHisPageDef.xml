@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditApprisalHisPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ApprisalHisHdr_VO" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="ApprisalHisHdr_VOIterator"/>
+    <iterator Binds="ApprisalHisLine_VO" RangeSize="6" DataControl="Oando_AMDataControl"
+              id="ApprisalHisLine_VOIterator"/>
+    <iterator Binds="AppraisalHistHdr_V_ROVO1" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="AppraisalHistHdr_V_ROVO1Iterator"/>
+    <iterator Binds="ApprisalHisLine_VO3" RangeSize="25" DataControl="Oando_AMDataControl"
+              id="ApprisalHisLine_VO3Iterator"/>
+  </executables>
+  <bindings>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <listOfValues IterBinding="ApprisalHisHdr_VOIterator" StaticList="false" Uses="LOV_PlanName" id="PlanName1"/>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="DisplayName">
+      <AttrNames>
+        <Item Value="DisplayName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="PlanName">
+      <AttrNames>
+        <Item Value="PlanName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="BusinessUnitName">
+      <AttrNames>
+        <Item Value="BusinessUnitName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="EmployeeNumber">
+      <AttrNames>
+        <Item Value="EmployeeNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="EmailAddress">
+      <AttrNames>
+        <Item Value="EmailAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="OverallRating1">
+      <AttrNames>
+        <Item Value="OverallRating"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="SuggestedFinalRating1">
+      <AttrNames>
+        <Item Value="SuggestedFinalRating"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="AppraisalComments">
+      <AttrNames>
+        <Item Value="AppraisalComments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="AppraisalFeedback">
+      <AttrNames>
+        <Item Value="AppraisalFeedback"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ApprisalHisLine_VO3Iterator" id="ApprisalHisLine_VO3">
+      <nodeDefinition DefName="model.vo.ApprisalHisLine_VO" Name="ApprisalHisLine_VO30">
+        <AttrNames>
+          <Item Value="ObjectiveName"/>
+          <Item Value="ScorecardName"/>
+          <Item Value="ScorecardStartDate"/>
+          <Item Value="ScorecardEndDate"/>
+          <Item Value="SupervisorName"/>
+          <Item Value="AppraisalHistLineId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ApprisalHisLine_VO3Iterator" id="MeasureName">
+      <AttrNames>
+        <Item Value="MeasureName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApprisalHisLine_VO3Iterator" id="ObjectiveStartDate">
+      <AttrNames>
+        <Item Value="ObjectiveStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApprisalHisLine_VO3Iterator" id="WeightingPercent">
+      <AttrNames>
+        <Item Value="WeightingPercent"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApprisalHisLine_VO3Iterator" id="ObjectiveTargetDate1">
+      <AttrNames>
+        <Item Value="ObjectiveTargetDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApprisalHisLine_VO3Iterator" id="Detail">
+      <AttrNames>
+        <Item Value="Detail"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApprisalHisLine_VO3Iterator" id="SuccessCriteria">
+      <AttrNames>
+        <Item Value="SuccessCriteria"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApprisalHisHdr_VOIterator" id="EmployeeNumber1">
+      <AttrNames>
+        <Item Value="EmployeeNumber"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

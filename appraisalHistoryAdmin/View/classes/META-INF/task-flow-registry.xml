@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/AddEditApprisalHis_BTF.xml" id="AddEditApprisalHis_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="EmployeeNumber"/>
+      <input-parameter name="PlanName"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/AddEditTravelRequest_BTF.xml" id="AddEditTravelRequest_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp">
+      <input-parameter name="mode"/>
+      <input-parameter name="headerId"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/taskflow/SearchApprisalHis_BTF.xml" id="SearchApprisalHis_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/SearchTravelReq_BTF.xml" id="SearchTravelReq_BTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="jsp"/>
+   <task-flow-descriptor path="WEB-INF/taskflow/testtt.xml" id="testtt" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+</task-flow-registry>

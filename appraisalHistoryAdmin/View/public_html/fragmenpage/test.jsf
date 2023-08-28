@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="test.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGroupLayout layout="vertical" id="pgl1">
+                <af:panelHeader text="ApprisalHisHdr_EO" id="ph1">
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.ApprisalHisHdrVOFilterQuery.queryDescriptor}"
+                              model="#{bindings.ApprisalHisHdrVOFilterQuery.queryModel}"
+                              queryListener="#{bindings.ApprisalHisHdrVOFilterQuery.processQuery}"
+                              queryOperationListener="#{bindings.ApprisalHisHdrVOFilterQuery.processQueryOperation}"
+                              resultComponentId="::resId1"/>
+                </af:panelHeader>
+                <af:table value="#{bindings.ApprisalHisHdr_VO.collectionModel}" var="row"
+                          rows="#{bindings.ApprisalHisHdr_VO.rangeSize}"
+                          emptyText="#{bindings.ApprisalHisHdr_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" fetchSize="#{bindings.ApprisalHisHdr_VO.rangeSize}" id="resId1">
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.AppraisalComments.label}" id="resId1c1">
+                        <af:outputText value="#{row.AppraisalComments}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.AppraisalComments.tooltip}"
+                                       id="ot1"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.AppraisalDate.label}" id="resId1c2">
+                        <af:outputText value="#{row.AppraisalDate}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.AppraisalDate.tooltip}" id="ot2">
+                            <af:convertDateTime pattern="#{bindings.ApprisalHisHdr_VO.hints.AppraisalDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.AppraisalFeedback.label}" id="resId1c3">
+                        <af:outputText value="#{row.AppraisalFeedback}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.AppraisalFeedback.tooltip}"
+                                       id="ot3"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.AppraisalHistHdrId.label}" id="resId1c4">
+                        <af:outputText value="#{row.AppraisalHistHdrId}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.AppraisalHistHdrId.tooltip}"
+                                       id="ot4">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApprisalHisHdr_VO.hints.AppraisalHistHdrId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.AppraisalPeriodEndDate.label}"
+                               id="resId1c5">
+                        <af:outputText value="#{row.AppraisalPeriodEndDate}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.AppraisalPeriodEndDate.tooltip}"
+                                       id="ot5">
+                            <af:convertDateTime pattern="#{bindings.ApprisalHisHdr_VO.hints.AppraisalPeriodEndDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.AppraisalPeriodStartDate.label}"
+                               id="resId1c6">
+                        <af:outputText value="#{row.AppraisalPeriodStartDate}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.AppraisalPeriodStartDate.tooltip}"
+                                       id="ot6">
+                            <af:convertDateTime pattern="#{bindings.ApprisalHisHdr_VO.hints.AppraisalPeriodStartDate.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.AppraisalPurpose.label}" id="resId1c7">
+                        <af:outputText value="#{row.AppraisalPurpose}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.AppraisalPurpose.tooltip}"
+                                       id="ot7"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.BusinessGroupName.label}" id="resId1c8">
+                        <af:outputText value="#{row.BusinessGroupName}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.BusinessGroupName.tooltip}"
+                                       id="ot8"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.Initiator.label}" id="resId1c9">
+                        <af:outputText value="#{row.Initiator}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.Initiator.tooltip}" id="ot9"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.OverallRating.label}" id="resId1c10">
+                        <af:outputText value="#{row.OverallRating}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.OverallRating.tooltip}" id="ot10"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.PersonId.label}" id="resId1c11">
+                        <af:outputText value="#{row.PersonId}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.PersonId.tooltip}" id="ot11">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApprisalHisHdr_VO.hints.PersonId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.SuggestedFinalRating.label}"
+                               id="resId1c12">
+                        <af:outputText value="#{row.SuggestedFinalRating}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.SuggestedFinalRating.tooltip}"
+                                       id="ot12">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApprisalHisHdr_VO.hints.SuggestedFinalRating.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.PlanName.label}" id="resId1c13">
+                        <af:outputText value="#{row.PlanName}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.PlanName.tooltip}" id="ot13"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.AppraiseeName.label}" id="resId1c14">
+                        <af:outputText value="#{row.AppraiseeName}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.AppraiseeName.tooltip}" id="ot14"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.EmployeeNumber.label}" id="resId1c15">
+                        <af:outputText value="#{row.EmployeeNumber}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.EmployeeNumber.tooltip}" id="ot15">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApprisalHisHdr_VO.hints.EmployeeNumber.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.EmployeeType.label}" id="resId1c16">
+                        <af:outputText value="#{row.EmployeeType}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.EmployeeType.tooltip}" id="ot16"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.HistoricalType.label}" id="resId1c17">
+                        <af:outputText value="#{row.HistoricalType}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.HistoricalType.tooltip}"
+                                       id="ot17"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.MainAppraiserId.label}" id="resId1c18">
+                        <af:outputText value="#{row.MainAppraiserId}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.MainAppraiserId.tooltip}"
+                                       id="ot18">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.ApprisalHisHdr_VO.hints.MainAppraiserId.format}"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.DisplayName.label}" id="resId1c19">
+                        <af:outputText value="#{row.DisplayName}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.DisplayName.tooltip}" id="ot19"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.PersonNumber.label}" id="resId1c20">
+                        <af:outputText value="#{row.PersonNumber}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.PersonNumber.tooltip}" id="ot20"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.BusinessUnitName.label}" id="resId1c21">
+                        <af:outputText value="#{row.BusinessUnitName}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.BusinessUnitName.tooltip}"
+                                       id="ot21"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.EmailAddress.label}" id="resId1c22">
+                        <af:outputText value="#{row.EmailAddress}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.EmailAddress.tooltip}" id="ot22"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.Trans_Name.label}" id="resId1c23">
+                        <af:outputText value="#{row.Trans_Name}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.Trans_Name.tooltip}" id="ot23"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.Trans_No.label}" id="resId1c24">
+                        <af:outputText value="#{row.Trans_No}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.Trans_No.tooltip}" id="ot24"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.Trans_Email.label}" id="resId1c25">
+                        <af:outputText value="#{row.Trans_Email}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.Trans_Email.tooltip}" id="ot25"/>
+                    </af:column>
+                    <af:column headerText="#{bindings.ApprisalHisHdr_VO.hints.Trans_BusinessGroup.label}"
+                               id="resId1c26">
+                        <af:outputText value="#{row.Trans_BusinessGroup}"
+                                       shortDesc="#{bindings.ApprisalHisHdr_VO.hints.Trans_BusinessGroup.tooltip}"
+                                       id="ot26"/>
+                    </af:column>
+                </af:table>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

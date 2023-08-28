@@ -1,0 +1,12 @@
+//Groovy Scripts for model.vo.ApprisalHisHdr_VO
+
+package model.vo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="Oando_AM_Plan_NameRovo1_1", name="bEmpNum")
+def bEmpNum_Oando_AM_Plan_NameRovo1_1_BindVariable_BoundParameter()
+{
+EmpNumTrans
+}
+

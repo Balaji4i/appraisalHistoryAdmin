@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+    <task-flow-definition id="AddEditTravelRequest_BTF">
+        <default-activity>Decider</default-activity>
+        <data-control-scope>
+            <shared/>
+        </data-control-scope>
+        <input-parameter-definition id="__8">
+            <name>mode</name>
+            <value>#{pageFlowScope.mode}</value>
+            <class>java.lang.String</class>
+        </input-parameter-definition>
+        <input-parameter-definition id="__9">
+            <name>headerId</name>
+            <value>#{pageFlowScope.headerId}</value>
+            <class>java.math.BigDecimal</class>
+        </input-parameter-definition>
+        <managed-bean id="__1">
+            <managed-bean-name>AddEditTravelReq</managed-bean-name>
+            <managed-bean-class>view.AddEditTravelReq</managed-bean-class>
+            <managed-bean-scope>backingBean</managed-bean-scope>
+        </managed-bean>
+        <view id="AddEditTravelReq">
+            <page>/fragment/AddEditTravelReq.jsff</page>
+        </view>
+        <router id="Decider">
+            <case id="__10">
+                <expression>#{pageFlowScope.mode eq 'add'}</expression>
+                <outcome>add</outcome>
+            </case>
+            <case id="__11">
+                <expression>#{pageFlowScope.mode eq 'edit'}</expression>
+                <outcome>edit</outcome>
+            </case>
+            <default-outcome>add</default-outcome>
+        </router>
+        <method-call id="CreateInsert">
+            <method>#{bindings.CreateInsert.execute}</method>
+            <outcome>
+                <fixed-outcome>CreateInsert</fixed-outcome>
+            </outcome>
+        </method-call>
+        <method-call id="ExecuteWithParams">
+            <method>#{bindings.ExecuteWithParams.execute}</method>
+            <outcome>
+                <fixed-outcome>ExecuteWithParams</fixed-outcome>
+            </outcome>
+        </method-call>
+        <task-flow-return id="back">
+            <outcome>
+                <name>back</name>
+            </outcome>
+        </task-flow-return>
+        <method-call id="CreateWithParameters1">
+            <method>#{bindings.CreateWithParams.execute}</method>
+            <outcome>
+                <fixed-outcome>CreateWithParams</fixed-outcome>
+            </outcome>
+        </method-call>
+        <method-call id="setOrgId">
+            <method>#{backingBeanScope.AddEditTravelReq.setOrgId}</method>
+            <outcome>
+                <fixed-outcome>setOrg</fixed-outcome>
+            </outcome>
+        </method-call>
+        <router id="router1">
+            <case id="__22">
+                <expression>#{sessionScope.reqPurpose eq 'others'}</expression>
+                <outcome>others</outcome>
+            </case>
+            <default-outcome>self</default-outcome>
+        </router>
+        <control-flow-rule id="__12">
+            <from-activity-id>Decider</from-activity-id>
+            <control-flow-case id="__16">
+                <from-outcome>edit</from-outcome>
+                <to-activity-id>ExecuteWithParams</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__4">
+                <from-outcome>add</from-outcome>
+                <to-activity-id>router1</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__14">
+            <from-activity-id>CreateInsert</from-activity-id>
+            <control-flow-case id="__15">
+                <from-outcome>CreateInsert</from-outcome>
+                <to-activity-id>AddEditTravelReq</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__17">
+            <from-activity-id>ExecuteWithParams</from-activity-id>
+            <control-flow-case id="__18">
+                <from-outcome>ExecuteWithParams</from-outcome>
+                <to-activity-id>AddEditTravelReq</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__2">
+            <from-activity-id>AddEditTravelReq</from-activity-id>
+            <control-flow-case id="__3">
+                <from-outcome>back</from-outcome>
+                <to-activity-id>back</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__7">
+            <from-activity-id>CreateWithParameters1</from-activity-id>
+            <control-flow-case id="__13">
+                <from-outcome>CreateWithParams</from-outcome>
+                <to-activity-id>AddEditTravelReq</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__5">
+            <from-activity-id>setOrgId</from-activity-id>
+            <control-flow-case id="__6">
+                <from-outcome>setOrg</from-outcome>
+                <to-activity-id>CreateWithParameters1</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <control-flow-rule id="__19">
+            <from-activity-id>router1</from-activity-id>
+            <control-flow-case id="__20">
+                <from-outcome>others</from-outcome>
+                <to-activity-id>CreateInsert</to-activity-id>
+            </control-flow-case>
+            <control-flow-case id="__21">
+                <from-outcome>self</from-outcome>
+                <to-activity-id>setOrgId</to-activity-id>
+            </control-flow-case>
+        </control-flow-rule>
+        <use-page-fragments/>
+        <visibility/>
+    </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="IntroHdrLine_VL"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  EntityAssociation="model.association.IntroHdrLine_AS">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.vl.IntroHdrLine_VL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="IntroLtrHdr_VO"
+    Cardinality="1"
+    Source="true"
+    Owner="model.vo.IntroLtrHdr_VO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="IntroLtrHdr_VO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.vo.IntroLtrHdr_VO.IntroLtrHdrId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="IntroLtrLines_VO"
+    Cardinality="-1"
+    Owner="model.vo.IntroLtrLines_VO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="IntroLtrLines_VO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.vo.IntroLtrLines_VO.IntroLtrHdrId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

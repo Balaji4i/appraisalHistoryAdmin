@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14"
+                id="SearchApprisalHis_BTF_SearchApprisalHis_BTF_filterPageDef" Package="taskflow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="filter" RequiresUpdateModel="true" Action="invokeMethod" MethodName="filter"
+                  IsViewObjectMethod="false" DataControl="Oando_AMDataControl"
+                  InstanceName="bindings.filter.dataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

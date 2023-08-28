@@ -1,0 +1,12 @@
+//Groovy Scripts for model.eo.ApprisalHisHdr_EO
+
+package model.eo
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+
+@TransientValueExpression(attributeName="AppraisalHistHdrId")
+def AppraisalHistHdrId_ExpressionScript_Expression()
+{
+new oracle.jbo.server.SequenceImpl("XXPMS_APPRAISAL_HIST_HDR_S",adf.object.getDBTransaction()).getSequenceNumber()
+}
+

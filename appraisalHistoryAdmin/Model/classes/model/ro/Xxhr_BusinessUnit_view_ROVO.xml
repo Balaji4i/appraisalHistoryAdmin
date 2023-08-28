@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Xxhr_BusinessUnit_view_ROVO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.ro.Xxhr_BusinessUnit_view_ROVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT  
+    XXHR_BUSINESS_UNITS_V.BU_ID BU_ID,  
+    XXHR_BUSINESS_UNITS_V.BU_NAME BU_NAME,  
+    XXHR_BUSINESS_UNITS_V.LOCATION_ID LOCATION_ID,  
+    XXHR_BUSINESS_UNITS_V.BUSINESS_GROUP_ID BUSINESS_GROUP_ID,  
+    XXHR_BUSINESS_UNITS_V.DATE_FROM DATE_FROM,  
+    XXHR_BUSINESS_UNITS_V.DATE_TO DATE_TO,  
+    XXHR_BUSINESS_UNITS_V.STATUS STATUS,  
+    XXHR_BUSINESS_UNITS_V.MANAGER_ID MANAGER_ID,  
+    XXHR_BUSINESS_UNITS_V.LEGAL_ENTITY_ID LEGAL_ENTITY_ID,  
+    XXHR_BUSINESS_UNITS_V.PRIMARY_LEDGER_ID PRIMARY_LEDGER_ID,  
+    XXHR_BUSINESS_UNITS_V.DEFAULT_SET_ID DEFAULT_SET_ID,  
+    XXHR_BUSINESS_UNITS_V.ENABLED_FOR_HR_FLAG ENABLED_FOR_HR_FLAG,  
+    XXHR_BUSINESS_UNITS_V.FIN_BUSINESS_UNIT_ID FIN_BUSINESS_UNIT_ID,  
+    XXHR_BUSINESS_UNITS_V.DEFAULT_CURRENCY_CODE DEFAULT_CURRENCY_CODE,  
+    XXHR_BUSINESS_UNITS_V.PROFIT_CENTER_FLAG PROFIT_CENTER_FLAG  
+FROM  
+    XXHR_BUSINESS_UNITS_V]]></SQLQuery>
+  <ViewAttribute
+    Name="BuId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BU_ID"
+    Expression="BU_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="BuName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BU_NAME"
+    Expression="BU_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+        <LABEL
+          ResId="model.ro.Xxhr_BusinessUnit_view_ROVO.BuName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LocationId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="LOCATION_ID"
+    Expression="LOCATION_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="BusinessGroupId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="BUSINESS_GROUP_ID"
+    Expression="BUSINESS_GROUP_ID"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DateFrom"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    AliasName="DATE_FROM"
+    Expression="DATE_FROM"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="DateTo"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    AliasName="DATE_TO"
+    Expression="DATE_TO"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="Status"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STATUS"
+    Expression="STATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ManagerId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="600"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="MANAGER_ID"
+    Expression="MANAGER_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LegalEntityId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="600"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LEGAL_ENTITY_ID"
+    Expression="LEGAL_ENTITY_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PrimaryLedgerId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="600"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PRIMARY_LEDGER_ID"
+    Expression="PRIMARY_LEDGER_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DefaultSetId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="600"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DEFAULT_SET_ID"
+    Expression="DEFAULT_SET_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EnabledForHrFlag"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="600"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ENABLED_FOR_HR_FLAG"
+    Expression="ENABLED_FOR_HR_FLAG"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FinBusinessUnitId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="600"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FIN_BUSINESS_UNIT_ID"
+    Expression="FIN_BUSINESS_UNIT_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DefaultCurrencyCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="600"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DEFAULT_CURRENCY_CODE"
+    Expression="DEFAULT_CURRENCY_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProfitCenterFlag"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="600"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROFIT_CENTER_FLAG"
+    Expression="PROFIT_CENTER_FLAG"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="Xxhr_BusinessUnit_view_ROVOCriteria"
+    ViewObjectName="model.ro.Xxhr_BusinessUnit_view_ROVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="Xxhr_BusinessUnit_view_ROVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="BuName"
+        ViewAttribute="BuName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

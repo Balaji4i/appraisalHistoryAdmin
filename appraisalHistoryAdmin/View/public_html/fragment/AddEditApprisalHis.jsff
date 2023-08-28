@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelBox id="pb1" showDisclosure="false">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+                        <af:gridCell marginStart="5px" width="50%" id="gc1">
+                            <af:outputText value="Appraisal History" id="ot1"
+                                           inlineStyle="font-size:large; font-weight:bold"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                            <af:panelGroupLayout layout="horizontal" halign="right" id="pgl2">
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:button text="Back"
+                                           actionListener="#{backingBeanScope.AddEditApprisalHis.onClickCancel}"
+                                           immediate="true" action="back" id="b7"></af:button>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                <af:spacer width="10" height="10" id="s3"/>
+                <af:panelBox id="pb2" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelFormLayout id="pfl1" rows="2" maxColumns="2"  fieldWidth="300px">
+                        <af:inputText value="#{bindings.DisplayName.inputValue}"
+                                      label="Employee Name"
+                                      required="#{bindings.DisplayName.hints.mandatory}"
+                                      columns="#{bindings.DisplayName.hints.displayWidth}"
+                                      maximumLength="#{bindings.DisplayName.hints.precision}"
+                                      shortDesc="#{bindings.DisplayName.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.DisplayName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.PlanName.inputValue}" label="#{bindings.PlanName.hints.label}"
+                                      required="#{bindings.PlanName.hints.mandatory}"
+                                      columns="#{bindings.PlanName.hints.displayWidth}"
+                                      maximumLength="#{bindings.PlanName.hints.precision}"
+                                      shortDesc="#{bindings.PlanName.hints.tooltip}" id="it3">
+                            <f:validator binding="#{bindings.PlanName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.BusinessUnitName.inputValue}"
+                                      label="Business Group"
+                                      required="#{bindings.BusinessUnitName.hints.mandatory}"
+                                      columns="#{bindings.BusinessUnitName.hints.displayWidth}"
+                                      maximumLength="#{bindings.BusinessUnitName.hints.precision}"
+                                      shortDesc="#{bindings.BusinessUnitName.hints.tooltip}" id="it13">
+                            <f:validator binding="#{bindings.BusinessUnitName.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.EmployeeNumber.inputValue}"
+                                      label="#{bindings.EmployeeNumber.hints.label}"
+                                      required="#{bindings.EmployeeNumber.hints.mandatory}"
+                                      columns="#{bindings.EmployeeNumber.hints.displayWidth}"
+                                      maximumLength="#{bindings.EmployeeNumber.hints.precision}"
+                                      shortDesc="#{bindings.EmployeeNumber.hints.tooltip}" id="it14" readOnly="true"
+                                      binding="#{backingBeanScope.AddEditApprisalHis.empNum}">
+                            <f:validator binding="#{bindings.EmployeeNumber.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeeNumber.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.EmailAddress.inputValue}"
+                                      label="Email"
+                                      required="#{bindings.EmailAddress.hints.mandatory}"
+                                      columns="#{bindings.EmailAddress.hints.displayWidth}"
+                                      maximumLength="#{bindings.EmailAddress.hints.precision}"
+                                      shortDesc="#{bindings.EmailAddress.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.EmailAddress.validator}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:panelBox>
+                <af:panelBox text="Overall Ratings and Comments" showDisclosure="true"
+                             inlineStyle="border-color:transparent;" id="pb4">
+                    <f:facet name="toolbar"/>
+                    <af:panelFormLayout id="pfl2">
+                        <af:inputText value="#{bindings.OverallRating1.inputValue}"
+                                      label="Over All Rating" contentStyle="width:160px;"
+                                      required="#{bindings.OverallRating1.hints.mandatory}"
+                                      columns="#{bindings.OverallRating1.hints.displayWidth}"
+                                      maximumLength="#{bindings.OverallRating1.hints.precision}"
+                                      shortDesc="#{bindings.OverallRating1.hints.tooltip}" id="it16">
+                            <f:validator binding="#{bindings.OverallRating1.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.SuggestedFinalRating1.inputValue}"
+                                      label="Suggested Final Rating" 
+                                      required="#{bindings.SuggestedFinalRating1.hints.mandatory}"
+                                      columns="#{bindings.SuggestedFinalRating1.hints.displayWidth}"
+                                      maximumLength="#{bindings.SuggestedFinalRating1.hints.precision}"
+                                      shortDesc="#{bindings.SuggestedFinalRating1.hints.tooltip}" id="it17">
+                            <f:validator binding="#{bindings.SuggestedFinalRating1.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.SuggestedFinalRating1.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.AppraisalComments.inputValue}"
+                                      label="Manager Comments" contentStyle="width:660px;"
+                                      required="#{bindings.AppraisalComments.hints.mandatory}"
+                                      columns="#{bindings.AppraisalComments.hints.displayWidth}"
+                                      maximumLength="#{bindings.AppraisalComments.hints.precision}"
+                                      shortDesc="#{bindings.AppraisalComments.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.AppraisalComments.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.AppraisalFeedback.inputValue}"
+                                      label="Employee Comments" contentStyle="width:660px;"
+                                      required="#{bindings.AppraisalFeedback.hints.mandatory}"
+                                      columns="#{bindings.AppraisalFeedback.hints.displayWidth}"
+                                      maximumLength="#{bindings.AppraisalFeedback.hints.precision}"
+                                      shortDesc="#{bindings.AppraisalFeedback.hints.tooltip}" id="it6">
+                            <f:validator binding="#{bindings.AppraisalFeedback.validator}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:panelBox>
+                <af:spacer width="10" height="10" id="s5"/>
+                <af:spacer width="10" height="10" id="s6"/>
+                <af:panelBox id="pb3" showDisclosure="false" text="Performance Objectivies" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2">
+                                <af:button id="b1" partialTriggers="::d1"
+                                           actionListener="#{backingBeanScope.AddEditApprisalHis.onClickShowpopup}"
+                                           text="View Objective">
+                                    <af:showPopupBehavior popupId="::p1" triggerType="action"/>
+                                </af:button>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.ApprisalHisLine_VO3.collectionModel}" var="row"
+                                  rows="#{bindings.ApprisalHisLine_VO3.rangeSize}"
+                                  emptyText="#{bindings.ApprisalHisLine_VO3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" fetchSize="#{bindings.ApprisalHisLine_VO3.rangeSize}" id="t3"
+                                  binding="#{backingBeanScope.AddEditApprisalHis.linetable}">
+                           
+                            <af:column headerText="Objective Name" width="300" id="c5">
+                                <af:link shortDesc="#{bindings.ApprisalHisLine_VO3.hints.ObjectiveName.tooltip}" partialSubmit="true" id="ot6"
+                                text="#{row.ObjectiveName}"
+				actionListener="#{backingBeanScope.AddEditApprisalHis.onClickShowpopup}">
+							<!--<af:showPopupBehavior popupId=":::p1" triggerType="action"/>-->
+                                    <af:setPropertyListener from="#{row.AppraisalHistLineId}"
+                                                            to="#{pageFlowScope.LineId}" type="action"/>
+                                </af:link>
+                            </af:column>
+                            
+                            
+                            <af:column headerText="Score Card Name" width="300" id="c7">
+                                <af:outputText value="#{row.ScorecardName}"
+                                               shortDesc="#{bindings.ApprisalHisLine_VO3.hints.ScorecardName.tooltip}"
+                                               id="ot8"/>
+                            </af:column>
+                            <af:column headerText="Score Card Start Date" width="300"
+                                       id="c8">
+                                <af:outputText value="#{row.ScorecardStartDate}"
+                                               shortDesc="#{bindings.ApprisalHisLine_VO3.hints.ScorecardStartDate.tooltip}"
+                                               id="ot9">
+                                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="Score Card End Date" width="300"
+                                       id="c9">
+                                <af:outputText value="#{row.ScorecardEndDate}"
+                                               shortDesc="#{bindings.ApprisalHisLine_VO3.hints.ScorecardEndDate.tooltip}"
+                                               id="ot10">
+                                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="Manager Name" width="300" id="c10">
+                                <af:outputText value="#{row.SupervisorName}"
+                                               shortDesc="#{bindings.ApprisalHisLine_VO3.hints.SupervisorName.tooltip}"
+                                               id="ot11"/>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+                <af:popup childCreation="deferred" id="p1"
+                          contentDelivery="lazyUncached"
+                         autoCancel="disabled" binding="#{backingBeanScope.AddEditApprisalHis.showPopup}">
+                    <af:dialog id="d1" type="none" resize="on"
+                               modal="false" contentWidth="1600" contentHeight="500"
+                               stretchChildren="first"
+                               closeIconVisible="false">
+                        <f:facet name="buttonBar">
+                        <af:button text="Cancel" actionListener="#{backingBeanScope.AddEditApprisalHis.popUpCancel}"/>
+                        </f:facet>
+                        <af:panelBox text="Basic Information" id="pb5">
+                            <f:facet name="toolbar"/>
+                            <af:panelFormLayout id="pfl3" fieldWidth="1200">
+                                <af:inputText value="#{bindings.MeasureName.inputValue}"
+                                              label="#{bindings.MeasureName.hints.label}"
+                                              required="#{bindings.MeasureName.hints.mandatory}"
+                                              columns="#{bindings.MeasureName.hints.displayWidth}"
+                                              maximumLength="#{bindings.MeasureName.hints.precision}"
+                                              shortDesc="#{bindings.MeasureName.hints.tooltip}" readOnly="true" id="it4">
+                                    <f:validator binding="#{bindings.MeasureName.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.ObjectiveStartDate.inputValue}"
+                                              label="#{bindings.ObjectiveStartDate.hints.label}"
+                                              required="#{bindings.ObjectiveStartDate.hints.mandatory}"
+                                              columns="#{bindings.ObjectiveStartDate.hints.displayWidth}"
+                                              maximumLength="#{bindings.ObjectiveStartDate.hints.precision}"
+                                              shortDesc="#{bindings.ObjectiveStartDate.hints.tooltip}" readOnly="true" id="it7">
+                                    <f:validator binding="#{bindings.ObjectiveStartDate.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.ObjectiveStartDate.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.WeightingPercent.inputValue}"
+                                              label="Weight"
+                                              required="#{bindings.WeightingPercent.hints.mandatory}"
+                                              columns="#{bindings.WeightingPercent.hints.displayWidth}"
+                                              maximumLength="#{bindings.WeightingPercent.hints.precision}"
+                                              shortDesc="#{bindings.WeightingPercent.hints.tooltip}"  readOnly="true" id="it9">
+                                    <f:validator binding="#{bindings.WeightingPercent.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.WeightingPercent.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.ObjectiveTargetDate1.inputValue}"
+                                              label="#{bindings.ObjectiveTargetDate1.hints.label}"
+                                              required="#{bindings.ObjectiveTargetDate1.hints.mandatory}"
+                                              columns="#{bindings.ObjectiveTargetDate1.hints.displayWidth}"
+                                              maximumLength="#{bindings.ObjectiveTargetDate1.hints.precision}"
+                                              shortDesc="#{bindings.ObjectiveTargetDate1.hints.tooltip}" readOnly="true" id="it10">
+                                    <f:validator binding="#{bindings.ObjectiveTargetDate1.validator}"/>
+                                    <af:convertDateTime pattern="#{bindings.ObjectiveTargetDate1.format}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.Detail.inputValue}"
+                                              label="Task"
+                                              required="#{bindings.Detail.hints.mandatory}"
+                                              columns="#{bindings.Detail.hints.displayWidth}"
+                                              maximumLength="#{bindings.Detail.hints.precision}"
+                                              shortDesc="#{bindings.Detail.hints.tooltip}" readOnly="true" id="it11">
+                                    <f:validator binding="#{bindings.Detail.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.SuccessCriteria.inputValue}"
+                                              label="#{bindings.SuccessCriteria.hints.label}"
+                                              required="#{bindings.SuccessCriteria.hints.mandatory}"
+                                              columns="#{bindings.SuccessCriteria.hints.displayWidth}"
+                                              maximumLength="#{bindings.SuccessCriteria.hints.precision}"
+                                              shortDesc="#{bindings.SuccessCriteria.hints.tooltip}"  readOnly="true" id="it12">
+                                    <f:validator binding="#{bindings.SuccessCriteria.validator}"/>
+                                </af:inputText>
+                            </af:panelFormLayout>
+                        </af:panelBox>
+                    </af:dialog>
+                </af:popup>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

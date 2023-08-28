@@ -1,0 +1,26 @@
+//Groovy Scripts for model.vo.IntroLtrLines_VO
+
+package model.vo
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="Relationship_View_ROVO1", name="BV_ContactType")
+def BV_ContactType_Relationship_View_ROVO1_BindVariable_BoundParameter()
+{
+ReleationTypeCode
+}
+
+
+@AccessorParameterExpression(accessorName="Relationship_View_ROVO1", name="BV_PersonId")
+def BV_PersonId_Relationship_View_ROVO1_BindVariable_BoundParameter()
+{
+PersonId
+}
+
+
+@AccessorParameterExpression(accessorName="Lookup_Relationship_View_ROVO", name="pLookupTypeCode")
+def pLookupTypeCode_Lookup_Relationship_View_ROVO_BindVariable_BoundParameter()
+{
+'CONTACT_RELATIONSHIP_CODE'
+}
+

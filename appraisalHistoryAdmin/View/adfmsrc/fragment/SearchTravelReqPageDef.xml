@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="SearchTravelReqPageDef"
+                Package="view.pageDefs">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="IntroLtrHdr_VO" RangeSize="5" DataControl="Oando_AMDataControl" id="IntroLtrHdr_VOIterator"/>
+        <searchRegion Criteria="IntroLtrHdr_VOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="IntroLtrHdr_VOIterator" id="IntroLtrHdrVOCriteriaQuery"/>
+        <iterator id="IntroLtrLines_VOIterator" Binds="IntroLtrLines_VO" DataControl="Oando_AMDataControl"
+                  RangeSize="25"/>
+    <!--invokeAction id="executeUser" Binds="ExecuteWithParams"
+                  Refresh="renderModel"/-->
+    </executables>
+    <bindings>
+        <attributeValues IterBinding="IntroLtrHdr_VOIterator" id="IntroLtrHdrId">
+            <AttrNames>
+                <Item Value="IntroLtrHdrId"/>
+            </AttrNames>
+        </attributeValues>
+        <tree IterBinding="IntroLtrHdr_VOIterator" id="IntroLtrHdr_VO">
+            <nodeDefinition DefName="model.vo.IntroLtrHdr_VO" Name="IntroLtrHdr_VO0">
+                <AttrNames>
+                    <Item Value="TravelPurposeCode"/>
+                    <Item Value="Trans_EmpName"/>
+                    <Item Value="Trans_EmpNo"/>
+                    <Item Value="Trans_Country"/>
+                    <Item Value="Trans_BusinessGroup"/>
+                    <Item Value="ApprovedStatus"/>
+                    <Item Value="TravelRequestNo"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <attributeValues IterBinding="IntroLtrLines_VOIterator" id="IntroLtrHdrId1">
+            <AttrNames>
+                <Item Value="IntroLtrHdrId"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="IntroLtrLines_VOIterator" id="IntroLtrLineId">
+            <AttrNames>
+                <Item Value="IntroLtrLineId"/>
+            </AttrNames>
+        </attributeValues>
+        <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+        <!--action IterBinding="IntroLtrHdr_VOIterator" id="ExecuteWithParams"
+                InstanceName="Oando_AMDataControl.IntroLtrHdr_VO" DataControl="Oando_AMDataControl"
+                RequiresUpdateModel="true" Action="executeWithParams">
+            <NamedData NDName="BV_Id" NDType="java.math.BigDecimal"/>
+            <NamedData NDName="pPersonId" NDType="java.math.BigDecimal"/>
+            <NamedData NDName="b_username" NDValue="#{sessionScope.userName}" NDType="java.lang.String"/>
+        </action>-->       
+    </bindings>
+</pageDefinition>

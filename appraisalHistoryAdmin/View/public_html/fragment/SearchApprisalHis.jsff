@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout layout="vertical" id="pgl3" inlineStyle="background-color:white;">
+       <af:outputText value="Employee Appraisal History" id="ot1" inlineStyle="font-size:x-large;"/>
+            <af:spacer width="10" height="10" id="s5"/>
+                    <af:panelLabelAndMessage labelStyle="background: transparent url(UA.png) no-repeat center left;
+               padding: 3px 0 1px 18px;" id="plam1">
+               <af:selectOneChoice value="#{bindings.EmpNumTrans.inputValue}" label="Employee Number"
+                                        required="true" shortDesc="#{bindings.EmpNumTrans.hints.tooltip}" id="soc1"
+                                        autoSubmit="true" partialTriggers="soc2"
+                                        binding="#{backingBeanScope.SearchApprisalHist.empNum}" showRequired="true"
+                                   valueChangeListener="#{backingBeanScope.SearchApprisalHist.valueChange}">
+                        <f:selectItems value="#{bindings.EmpNumTrans.items}" id="si1"/>
+                        <f:validator binding="#{bindings.EmpNumTrans.validator}"/>
+                    </af:selectOneChoice>
+	</af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s1"/>
+        <af:panelLabelAndMessage labelStyle="background: transparent url(UA.png) no-repeat center left;
+               padding: 5px 0 1px 70px;" id="plam">
+                    <af:selectOneChoice value="#{bindings.PlanNameTrans.inputValue}" label="Plan Name"
+                                        required="#{bindings.PlanNameTrans.hints.mandatory}"
+                                        shortDesc="#{bindings.PlanNameTrans.hints.tooltip}" id="soc2" autoSubmit="true"
+                                        partialTriggers="soc1" binding="#{backingBeanScope.SearchApprisalHist.planName}"
+                                        inlineStyle="text-align:match-parent;">
+                        <f:selectItems value="#{bindings.PlanNameTrans.items}" id="si2"/>
+                        <f:validator binding="#{bindings.PlanNameTrans.validator}"/>
+                    </af:selectOneChoice>
+                    </af:panelLabelAndMessage>
+                    
+        <af:panelGroupLayout id="t2" styleClass="AFStretchWidth" layout="horizontal" halign="right" inlineStyle="float:right;">
+            <af:button text="Search" id="b2" actionListener="#{backingBeanScope.SearchApprisalHist.onClickSearch}"
+                       inlineStyle="float:right;"/>
+            <af:spacer width="10" height="10" id="s2"/>
+            <af:button text="Reset" id="b3" inlineStyle="float:right;"
+                       actionListener="#{backingBeanScope.SearchApprisalHist.onClickReset}"/>
+                       </af:panelGroupLayout>
+     <af:toolbar id="t3" styleClass="AFStretchWidth" >
+      </af:toolbar>
+            <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                <af:toolbar id="t1" flex="1">
+                    <af:link hoverIcon="/images/func_pencil_16_hov.png" action="addEdit"
+                                         depressedIcon="/images/func_pencil_16_act.png"
+                                         icon="/images/func_pencil_16_ena.png" partialSubmit="true"
+                                         disabledIcon="/images/func_pencil_16_dis.png" id="l2"
+                                         actionListener="#{backingBeanScope.SearchApprisalHist.onClickEdit}"
+                                         rendered="false">
+                                    <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}" type="action"/>
+                                    <af:setPropertyListener from="#{bindings.AppraisalHistHdrId1.inputValue}"
+                                                            to="#{pageFlowScope.AppraisalHistHdrId1}" type="action"/>
+                    </af:link>
+                        <af:button text="View Appraisal"  id="b1" action="addEdit"
+						actionListener="#{backingBeanScope.SearchApprisalHist.onClickEdit}">
+						
+                            <af:setPropertyListener type="action" from="#{'edit'}" to="#{pageFlowScope.mode}"/>
+                            <af:setPropertyListener type="action" from="#{bindings.EmployeeNumber1.inputValue}"
+                                                    to="#{pageFlowScope.EmployeeNumber1}"/>
+                           <af:setPropertyListener type="action" from="#{bindings.PlanName1.inputValue}"
+                                                    to="#{pageFlowScope.PlanName1}"/>
+                        </af:button> 
+                       
+                          
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.AppraisalHistHdr_V_ROVO1.collectionModel}" styleClass="AFStretchWidth" var="row"
+                          rows="#{bindings.AppraisalHistHdr_V_ROVO1.rangeSize}"
+                          emptyText="#{bindings.AppraisalHistHdr_V_ROVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0" scrollPolicy="page"
+                          selectedRowKeys="#{bindings.AppraisalHistHdr_V_ROVO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.AppraisalHistHdr_V_ROVO1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.AppraisalHistHdr_V_ROVO1.rangeSize}" id="resId1"
+                          partialTriggers=":::b2">
+                    <af:column headerText="Plan Name" id="resId1c1"
+                               width="380">
+                        <af:link text="#{row.PlanName}" id="l1"
+                                 shortDesc="#{bindings.AppraisalHistHdr_V_ROVO1.hints.PlanName.tooltip}"
+                                 action="addEdit" actionListener="#{backingBeanScope.SearchApprisalHist.onClickEdit}"
+                                 binding="#{backingBeanScope.SearchApprisalHist.planNameTest}">
+                            <af:setPropertyListener from="#{row.PlanName}"
+                                                    to="#{pageFlowScope.PlanName1}" type="action"/>
+                            <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}" type="action"/>
+                            <af:setPropertyListener from="#{row.EmployeeNumber}"
+                                                    to="#{pageFlowScope.EmployeeNumber1}" type="action"/>
+                        </af:link>
+                    </af:column>
+                    <af:column headerText="Employee Number"
+                               id="resId1c2" width="148">
+                        <af:outputText value="#{row.EmployeeNumber}"
+                                       shortDesc="#{bindings.AppraisalHistHdr_V_ROVO1.hints.EmployeeNumber.tooltip}"
+                                       id="ot9" binding="#{backingBeanScope.SearchApprisalHist.tstENum}">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.AppraisalHistHdr_V_ROVO1.hints.EmployeeNumber.format}"/>
+                        </af:outputText>
+                       
+                    </af:column>
+                    <af:column headerText="Employee Name" id="resId1c3"
+                               width="200">
+                        <af:outputText value="#{row.DisplayName}"
+                                       shortDesc="#{bindings.AppraisalHistHdr_V_ROVO1.hints.DisplayName.tooltip}"
+                                       id="ot10"/>
+                    </af:column>
+                    <af:column headerText="Period Start Date"
+                               id="resId1c6" width="150">
+                        <af:outputText value="#{row.AppraisalPeriodStartDate}"
+                                       shortDesc="#{bindings.AppraisalHistHdr_V_ROVO1.hints.AppraisalPeriodStartDate.tooltip}"
+                                       id="ot13">
+                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="Period End Date"
+                               id="resId1c7" width="150">
+                        <af:outputText value="#{row.AppraisalPeriodEndDate}"
+                                       shortDesc="#{bindings.AppraisalHistHdr_V_ROVO1.hints.AppraisalPeriodEndDate.tooltip}"
+                                       id="ot14">
+                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="Appraisal Date" id="resId1c5" width="150">
+                        <af:outputText value="#{row.AppraisalDate}"
+                                       shortDesc="#{bindings.AppraisalHistHdr_V_ROVO1.hints.AppraisalDate.tooltip}"
+                                       id="ot12">
+                            <af:convertDateTime pattern="dd-MM-yyyy"/>
+                        </af:outputText>
+                    </af:column>
+                    <af:column headerText="Manager" id="resId1c4"
+                               width="150">
+                        <af:outputText value="#{row.Initiator}"
+                                       shortDesc="#{bindings.AppraisalHistHdr_V_ROVO1.hints.Initiator.tooltip}"
+                                       id="ot11"/>
+                    </af:column>
+                </af:table>
+            </af:panelCollection>
+       
+    </af:panelGroupLayout>-->
+</jsp:root>

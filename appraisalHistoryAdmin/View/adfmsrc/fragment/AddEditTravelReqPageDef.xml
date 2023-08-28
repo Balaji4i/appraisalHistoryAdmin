@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="AddEditTravelReqPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="IntroLtrHdr_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="IntroLtrHdr_VOIterator"/>
+    <iterator Binds="IntroLtrLines_VO" RangeSize="25" DataControl="Oando_AMDataControl" id="IntroLtrLines_VOIterator"/>
+    <iterator id="Employee_Depnd_View_ROVOIterator" Binds="Employee_Depnd_View_ROVO" DataControl="Oando_AMDataControl"
+              RangeSize="25"/>
+    <iterator id="Employee_View_ROVOIterator" Binds="Employee_View_ROVO" DataControl="Oando_AMDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="IntroLtrHdr_VOIterator" StaticList="false" Uses="LOV_Trans_EmpName" id="Trans_EmpName"/>
+    <listOfValues IterBinding="IntroLtrHdr_VOIterator" StaticList="false" Uses="LOV_Trans_Country" id="Trans_Country"/>
+    <attributeValues IterBinding="IntroLtrHdr_VOIterator" id="TravelRequestNo">
+      <AttrNames>
+        <Item Value="TravelRequestNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="IntroLtrHdr_VOIterator" id="Trans_EmpNo">
+      <AttrNames>
+        <Item Value="Trans_EmpNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="IntroLtrHdr_VOIterator" id="Trans_EmailId">
+      <AttrNames>
+        <Item Value="Trans_EmailId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="IntroLtrHdr_VOIterator" id="ApprovedStatus">
+      <AttrNames>
+        <Item Value="ApprovedStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="IntroLtrHdr_VOIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <list IterBinding="IntroLtrHdr_VOIterator" StaticList="false" Uses="LOV_TravelPurposeCode" id="TravelPurposeCode"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <action IterBinding="IntroLtrLines_VOIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <tree IterBinding="IntroLtrLines_VOIterator" id="IntroLtrLines_VO">
+      <nodeDefinition DefName="model.vo.IntroLtrLines_VO" Name="IntroLtrLines_VO0">
+        <AttrNames>
+          <Item Value="ReleationTypeCode"/>
+          <Item Value="DependentFullName"/>
+          <Item Value="EmployeeFullName"/>
+          <Item Value="DateOfBirth"/>
+          <Item Value="PlaceBirth"/>
+          <Item Value="PassportNo"/>
+          <Item Value="PassportIssueDate"/>
+          <Item Value="PassportEndDate"/>
+          <Item Value="Trans_Select" Binds="Trans_Select"/>
+          <Item Value="ProTravelDate"/>
+          <Item Value="ExpReturnDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="Oando_AMDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="IntroLtrHdr_VOIterator" id="PersonId">
+      <AttrNames>
+        <Item Value="PersonId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="IntroLtrLines_VOIterator" id="Delete" InstanceName="Oando_AMDataControl.IntroLtrLines_VO"
+            DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="IntroLtrHdr_VOIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="IntroLtrLines_VOIterator" id="Trans_Select" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Trans_Select"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action id="Rollback" DataControl="Oando_AMDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="IntroLtrHdr_VOIterator" id="IntroLtrHdrId">
+      <AttrNames>
+        <Item Value="IntroLtrHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="IntroLtrHdr_VOIterator" id="Trans_BusinessGroup">
+      <AttrNames>
+        <Item Value="Trans_BusinessGroup"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

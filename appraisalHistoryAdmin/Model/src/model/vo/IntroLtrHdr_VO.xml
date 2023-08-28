@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="IntroLtrHdr_VO"
+  Version="12.2.1.9.14"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  RowClass="model.vo.IntroLtrHdr_VORowImpl"
+  ComponentClass="model.vo.IntroLtrHdr_VOImpl"
+  OrderBy="TRAVEL_REQUEST_NO DESC"
+  SelectAllAttributes="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.vo.IntroLtrHdr_VO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="BV_Id"
+    Kind="viewcriteria"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="pPersonId"
+    Kind="viewcriteria"
+    Type="java.math.BigDecimal"/>
+  <Variable
+    Name="b_username"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <ViewAccessor
+    Name="Employee_View_ROVO"
+    ViewObjectName="model.ro.Employee_View_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Lookup_TravelPurpose"
+    ViewObjectName="model.ro.Lookup_View_ROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="Travel_Purpose_VC"
+      FullName="model.ro.Lookup_View_ROVO.Travel_Purpose_VC"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="Employee_View_Ref"
+    ViewObjectName="model.ro.Employee_View_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Country_Ref"
+    ViewObjectName="model.ro.Country_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Business_Group_View_ROVO1"
+    ViewObjectName="model.ro.Business_Group_View_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Business_Group_Ref"
+    ViewObjectName="model.ro.Business_Group_View_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="Country_ROVO"
+    ViewObjectName="model.ro.Country_ROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="BusinessGrpROVO"
+    ViewObjectName="model.ro.BusinessGrpROVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Trans_EmpName"
+    ListVOName="Employee_View_ROVO"
+    NullValueFlag="none"
+    MRUCount="0"
+    ComboRowCountHint="10">
+    <AttrArray Name="AttrNames">
+      <Item Value="Trans_EmpName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="PersonId"/>
+      <Item Value="Trans_EmailId"/>
+      <Item Value="Trans_EmpNo"/>
+      <Item Value="Trans_BusinessGroup"/>
+      <Item Value="BusinessUnitId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DisplayName"/>
+      <Item Value="PersonId"/>
+      <Item Value="EmailAddress"/>
+      <Item Value="PersonNumber"/>
+      <Item Value="BusinessUnitName"/>
+      <Item Value="BusinessUnitId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DisplayName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="EmployeeName_View_Criteria"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_TravelPurposeCode"
+    ListVOName="Lookup_TravelPurpose"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="TravelPurposeCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupValueCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LookupValueNameDisp"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Trans_Country"
+    ListVOName="Country_ROVO"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Trans_Country"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DestCountryCode"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="TerritoryShortName"/>
+      <Item Value="TerritoryCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="TerritoryShortName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="Country_ROVOCriteria"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Trans_BusinessGroup"
+    ListVOName="BusinessGrpROVO"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Trans_BusinessGroup"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="BusinessUnitId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuName"/>
+      <Item Value="BuId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="findByBusinessGroup_VCriteria"/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT IntroLtrHdr_EO.APPROVED_STATUS,                 
+       IntroLtrHdr_EO.BUSINESS_UNIT_ID,                 
+       IntroLtrHdr_EO.CREATED_BY,                 
+       IntroLtrHdr_EO.CREATION_DATE,                 
+       IntroLtrHdr_EO.DEST_COUNTRY_CODE,                 
+       IntroLtrHdr_EO.INTRO_LTR_HDR_ID,                 
+       IntroLtrHdr_EO.LAST_UPDATE_DATE,                 
+       IntroLtrHdr_EO.LAST_UPDATE_LOGIN,                 
+       IntroLtrHdr_EO.LAST_UPDATED_BY,                 
+       IntroLtrHdr_EO.PERSON_ID,                 
+       IntroLtrHdr_EO.REMARKS,                 
+       IntroLtrHdr_EO.TRAVEL_PURPOSE_CODE,                 
+       IntroLtrHdr_EO.TRAVEL_REQUEST_NO            
+FROM  XXSSHR_INTRO_LTR_HDR IntroLtrHdr_EO,xxper_users users               
+WHERE IntroLtrHdr_EO.PERSON_ID = users.PERSON_ID               
+and upper(users.username) =upper(:b_username)]]></SQLQuery>
+  <EntityUsage
+    Name="IntroLtrHdr_EO"
+    Entity="model.eo.IntroLtrHdr_EO"/>
+  <ViewAttribute
+    Name="ApprovedStatus"
+    PrecisionRule="true"
+    EntityAttrName="ApprovedStatus"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="APPROVED_STATUS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.ApprovedStatus_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BusinessUnitId"
+    PrecisionRule="true"
+    EntityAttrName="BusinessUnitId"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="BUSINESS_UNIT_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.BusinessUnitId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="CREATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.CreationDate_LABEL"/>
+        <FMT_FORMAT
+          ResId="model.vo.IntroLtrHdr_VO.CreationDate_FMT_FORMAT"/>
+        <FMT_FORMATTER
+          ResId="model.vo.IntroLtrHdr_VO.CreationDate_FMT_FORMATTER"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DestCountryCode"
+    PrecisionRule="true"
+    EntityAttrName="DestCountryCode"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="DEST_COUNTRY_CODE"/>
+  <ViewAttribute
+    Name="IntroLtrHdrId"
+    PrecisionRule="true"
+    EntityAttrName="IntroLtrHdrId"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="INTRO_LTR_HDR_ID"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="LAST_UPDATE_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdateLogin"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateLogin"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="LAST_UPDATE_LOGIN"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="LAST_UPDATED_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="PersonId"
+    PrecisionRule="true"
+    EntityAttrName="PersonId"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="PERSON_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.PersonId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="REMARKS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.Remarks_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TravelPurposeCode"
+    PrecisionRule="true"
+    EntityAttrName="TravelPurposeCode"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="TRAVEL_PURPOSE_CODE"
+    LOVName="LOV_TravelPurposeCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.TravelPurposeCode_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TravelRequestNo"
+    PrecisionRule="true"
+    EntityAttrName="TravelRequestNo"
+    EntityUsage="IntroLtrHdr_EO"
+    AliasName="TRAVEL_REQUEST_NO">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.TravelRequestNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Trans_EmpName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_Trans_EmpName">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.Trans_EmpName_LABEL"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Trans_EmpNo"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.Trans_EmpNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Trans_EmailId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.Trans_EmailId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Trans_Country"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_Trans_Country">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.Trans_Country_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Trans_BusinessGroup"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_Trans_BusinessGroup">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="model.vo.IntroLtrHdr_VO.Trans_BusinessGroup_LABEL"/>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <DISPLAYHEIGHT
+          Value="50"/>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="IntroLtrHdr_VOCriteria"
+    ViewObjectName="model.vo.IntroLtrHdr_VO"
+    Conjunction="AND"
+    Mode="3">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="displayName"
+          ResId="model.vo.IntroLtrHdr_VO.IntroLtrHdr_VOCriteria_displayName"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="IntroLtrHdr_VOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="TravelRequestNo"
+        ViewAttribute="TravelRequestNo"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Trans_EmpName"
+        ViewAttribute="Trans_EmpName"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Trans_BusinessGroup"
+        ViewAttribute="Trans_BusinessGroup"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="findById"
+    ViewObjectName="model.vo.IntroLtrHdr_VO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="displayName"
+          ResId="model.vo.IntroLtrHdr_VO.findById_displayName"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="IntroLtrHdr_VOCriteria1_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="IntroLtrHdrId"
+        ViewAttribute="IntroLtrHdrId"
+        Operator="="
+        Conjunction="AND"
+        Value=":BV_Id"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="FindByPersonId"
+    ViewObjectName="model.vo.IntroLtrHdr_VO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="IntroLtrHdr_VOCriteria1_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="PersonId"
+        ViewAttribute="PersonId"
+        Operator="="
+        Conjunction="AND"
+        Value=":pPersonId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="IntroLtrLines_VO"
+    ViewLink="model.vl.IntroHdrLine_VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

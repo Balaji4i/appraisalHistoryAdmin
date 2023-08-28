@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelGroupLayout layout="vertical" id="pgl1">
+                <af:panelHeader text="Oando Introduction Letter" id="ph1">
+                    <af:query id="qryId1" headerText="Search" disclosed="true" 
+                              value="#{bindings.IntroLtrHdrVOCriteriaQuery.queryDescriptor}"
+                              model="#{bindings.IntroLtrHdrVOCriteriaQuery.queryModel}"
+                              queryListener="#{bindings.IntroLtrHdrVOCriteriaQuery.processQuery}"
+                              queryOperationListener="#{bindings.IntroLtrHdrVOCriteriaQuery.processQueryOperation}"/>
+                </af:panelHeader>
+                <af:panelBox id="pb1" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" flex="1">
+                                <af:button text="Add" id="b1" action="addEdit" rendered="false">
+                                    <af:setPropertyListener from="#{'add'}" to="#{pageFlowScope.mode}" type="action"/>
+                                    <af:setPropertyListener from="#{null}" to="#{pageFlowScope.headerId}"
+                                                            type="action"/>
+                                </af:button>
+                                <af:link id="cil3" icon="/images/func_add_16_ena.png"
+                                         hoverIcon="/images/func_add_16_hov.png" partialSubmit="true" action="addEdit">
+                                    <af:setPropertyListener from="#{'add'}" to="#{pageFlowScope.mode}" type="action"/>
+                                    <af:setPropertyListener from="#{null}" to="#{pageFlowScope.headerId}"
+                                                            type="action"/>
+                                </af:link>
+                                <af:spacer width="10" height="10" id="s1"/>
+                                <af:button text="Edit" id="b2" action="addEdit" rendered="false">
+                                    <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}" type="action"/>
+                                    <af:setPropertyListener from="#{bindings.IntroLtrHdrId.inputValue}"
+                                                            to="#{pageFlowScope.headerId}" type="action"/>
+                                </af:button>
+                                <af:link hoverIcon="/images/func_pencil_16_hov.png" action="addEdit"
+                                         depressedIcon="/images/func_pencil_16_act.png"
+                                         icon="/images/func_pencil_16_ena.png" partialSubmit="true"
+                                         disabledIcon="/images/func_pencil_16_dis.png" id="l2"
+                                         actionListener="#{backingBeanScope.SearchTravelReq.onClickEdit}">
+                                    <af:setPropertyListener from="#{'edit'}" to="#{pageFlowScope.mode}" type="action"/>
+                                    <af:setPropertyListener from="#{bindings.IntroLtrHdrId.inputValue}"
+                                                            to="#{pageFlowScope.headerId}" type="action"/>
+                                </af:link>
+                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:link icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         depressedIcon="/images/func_report_16_act.png"
+                                         disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true" id="l1"
+                                         actionListener="#{backingBeanScope.SearchTravelReq.onClickDelete}"></af:link>    
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>                       
+                        <af:table value="#{bindings.IntroLtrHdr_VO.collectionModel}" var="row"
+                                  rows="#{bindings.IntroLtrHdr_VO.rangeSize}"
+                                  emptyText="#{bindings.IntroLtrHdr_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" fetchSize="#{bindings.IntroLtrHdr_VO.rangeSize}" id="t1"
+                                  partialTriggers="::l1"
+                                  selectedRowKeys="#{bindings.IntroLtrHdr_VO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.IntroLtrHdr_VO.collectionModel.makeCurrent}"
+                                  rowSelection="single" scrollPolicy="page">
+                            <af:column headerText="#{bindings.IntroLtrHdr_VO.hints.TravelRequestNo.label}" id="c7"
+                                       width="100"
+                                       sortProperty="#{bindings.IntroLtrHdr_VO.hints.TravelRequestNo.name}"
+                                       sortable="true">
+                                <af:inputText value="#{row.bindings.TravelRequestNo.inputValue}"
+                                              readOnly="true"
+                                              label="#{bindings.IntroLtrHdr_VO.hints.TravelRequestNo.label}"
+                                              required="#{bindings.IntroLtrHdr_VO.hints.TravelRequestNo.mandatory}"
+                                              columns="#{bindings.IntroLtrHdr_VO.hints.TravelRequestNo.displayWidth}"
+                                              maximumLength="#{bindings.IntroLtrHdr_VO.hints.TravelRequestNo.precision}"
+                                              shortDesc="#{bindings.IntroLtrHdr_VO.hints.TravelRequestNo.tooltip}"
+                                              id="it2">
+                                    <f:validator binding="#{row.bindings.TravelRequestNo.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrHdr_VO.hints.TravelPurposeCode.label}" id="c1"
+                                       width="180"
+                                       sortProperty="#{bindings.IntroLtrHdr_VO.hints.TravelPurposeCode.name}"
+                                       sortable="true">
+                                <af:selectOneChoice value="#{row.bindings.TravelPurposeCode.inputValue}"
+                                                    label="#{row.bindings.TravelPurposeCode.label}"
+                                                    required="#{bindings.IntroLtrHdr_VO.hints.TravelPurposeCode.mandatory}"
+                                                    shortDesc="#{bindings.IntroLtrHdr_VO.hints.TravelPurposeCode.tooltip}"
+                                                    id="soc1" readOnly="true">
+                                    <f:selectItems value="#{row.bindings.TravelPurposeCode.items}" id="si1"/>
+                                    <f:validator binding="#{row.bindings.TravelPurposeCode.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpName.label}" id="c2"
+                                       width="200" sortProperty="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpName.name}"
+                                       sortable="true">
+                                <af:inputComboboxListOfValues id="trans_EmpNameId"
+                                                              popupTitle="Search and Select: #{bindings.IntroLtrHdr_VO.hints.Trans_EmpName.label}"
+                                                              value="#{row.bindings.Trans_EmpName.inputValue}"
+                                                              model="#{row.bindings.Trans_EmpName.listOfValuesModel}"
+                                                              required="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpName.mandatory}"
+                                                              columns="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpName.displayWidth}"
+                                                              shortDesc="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpName.tooltip}"
+                                                              readOnly="true">
+                                    <f:validator binding="#{row.bindings.Trans_EmpName.validator}"/>
+                                </af:inputComboboxListOfValues>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpNo.label}" id="c3"
+                                       rendered="false" width="150" sortProperty="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpNo.name}"
+                                       sortable="true">
+                                <af:inputText value="#{row.bindings.Trans_EmpNo.inputValue}"
+                                              label="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpNo.label}"
+                                              required="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpNo.mandatory}"
+                                              columns="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpNo.displayWidth}"
+                                              maximumLength="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpNo.precision}"
+                                              shortDesc="#{bindings.IntroLtrHdr_VO.hints.Trans_EmpNo.tooltip}" id="it1"
+                                              readOnly="true">
+                                    <f:validator binding="#{row.bindings.Trans_EmpNo.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrHdr_VO.hints.Trans_Country.label}" id="c4"
+                                       width="200" sortProperty="#{bindings.IntroLtrHdr_VO.hints.Trans_Country.name}"
+                                       sortable="true">
+                                <af:inputComboboxListOfValues id="trans_CountryId"
+                                                              popupTitle="Search and Select: #{bindings.IntroLtrHdr_VO.hints.Trans_Country.label}"
+                                                              value="#{row.bindings.Trans_Country.inputValue}"
+                                                              model="#{row.bindings.Trans_Country.listOfValuesModel}"
+                                                              required="#{bindings.IntroLtrHdr_VO.hints.Trans_Country.mandatory}"
+                                                              columns="#{bindings.IntroLtrHdr_VO.hints.Trans_Country.displayWidth}"
+                                                              shortDesc="#{bindings.IntroLtrHdr_VO.hints.Trans_Country.tooltip}"
+                                                              readOnly="true">
+                                    <f:validator binding="#{row.bindings.Trans_Country.validator}"/>
+                                </af:inputComboboxListOfValues>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrHdr_VO.hints.Trans_BusinessGroup.label}" id="c5"
+                                       width="350"
+                                       sortProperty="#{bindings.IntroLtrHdr_VO.hints.Trans_BusinessGroup.name}"
+                                       sortable="true">
+                                <af:inputComboboxListOfValues id="trans_BusinessGroupId"
+                                                              popupTitle="Search and Select: #{bindings.IntroLtrHdr_VO.hints.Trans_BusinessGroup.label}"
+                                                              value="#{row.bindings.Trans_BusinessGroup.inputValue}"
+                                                              model="#{row.bindings.Trans_BusinessGroup.listOfValuesModel}"
+                                                              required="#{bindings.IntroLtrHdr_VO.hints.Trans_BusinessGroup.mandatory}"
+                                                              columns="#{bindings.IntroLtrHdr_VO.hints.Trans_BusinessGroup.displayWidth}"
+                                                              shortDesc="#{bindings.IntroLtrHdr_VO.hints.Trans_BusinessGroup.tooltip}"
+                                                              readOnly="true">
+                                    <f:validator binding="#{row.bindings.Trans_BusinessGroup.validator}"/>
+                                </af:inputComboboxListOfValues>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrHdr_VO.hints.ApprovedStatus.label}" id="c6"
+                                       width="250" sortProperty="#{bindings.IntroLtrHdr_VO.hints.ApprovedStatus.name}"
+                                       sortable="true">
+                                <af:outputText value="#{row.ApprovedStatus}"
+                                 inlineStyle="color:#{(row.ApprovedStatus eq 'APPROVED')?'green':(row.ApprovedStatus eq 'SUBMITTED FOR APPROVAL')?'orange':(row.ApprovedStatus eq 'DRAFT') ? 'black' : 'red'};"
+                                               shortDesc="#{bindings.IntroLtrHdr_VO.hints.ApprovedStatus.tooltip}"
+                                               id="ot1"/>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                    <f:facet name="toolbar"/>
+                </af:panelBox>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

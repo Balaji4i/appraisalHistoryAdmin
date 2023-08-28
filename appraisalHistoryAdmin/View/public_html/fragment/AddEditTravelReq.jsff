@@ -1,0 +1,344 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:pageTemplate viewId="/oracle/apps/uikit/common/pageTemplates/MainPageTemplate.jspx" id="pt1">
+        <f:facet name="pageContents">
+            <af:panelBox id="pb1" showDisclosure="false">
+                <af:panelGridLayout id="pgl1">
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+                        <af:gridCell marginStart="5px" width="50%" id="gc1">
+                            <af:outputText value="Oando Introduction Letter" id="ot1"
+                                           inlineStyle="font-size:large; font-weight:bold"/>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="50%" marginEnd="5px" id="gc2">
+                        <af:panelGroupLayout  layout="horizontal" halign="right" id="pgl2">
+                            <af:button text="Save &amp; Submit" id="b2"
+                                       actionListener="#{backingBeanScope.AddEditTravelReq.onClickSubmit}"
+                                       disabled="#{bindings.IntroLtrLines_VO.estimatedRowCount eq 0 || bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED' ? true : false}"
+                                       partialTriggers="soc1"/>
+                            <!--af:spacer width="10" height="10" id="s1"/-->
+                            <af:button text="Save" id="b3" rendered="false"
+                                       actionListener="#{backingBeanScope.AddEditTravelReq.onClickSave}"
+                                         disabled="#{bindings.IntroLtrLines_VO.estimatedRowCount eq 0 || bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                       partialTriggers="pc1:cil3"/>
+                            <af:spacer width="10" height="10" id="s2"/>
+                            <af:button text="Cancel"
+                                           actionListener="#{backingBeanScope.AddEditTravelReq.onClickCancel}"
+                                           immediate="true" action="back" id="b7">
+                                  
+                                </af:button>
+                            <af:button text="Cancel" id="b1" immediate="true" rendered="false">
+                                <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                            </af:button>
+                            <af:popup id="p1" binding="#{backingBeanScope.AddEditTravelReq.p1}">
+                                <af:dialog id="d1" titleIconSource="/internal_images/warning.png" type="none"
+                                           inlineStyle="width:350.0px; height:108px;" title="Warning">
+                                    <af:outputText value="Are you sure want to Cancel this Information ?" id="ot7"
+                                                   inlineStyle="font-weight:bold;"/>
+                                    <f:facet name="buttonBar">
+                                        <af:toolbar id="t3">
+                                            <af:spacer width="210" height="10" id="s25"/>
+                                            <af:button text="Discard" id="cb8"
+                                                      actionListener="#{backingBeanScope.AddEditTravelReq.onClickCancel}" immediate="true"
+                                                       action="back">
+                                                <af:resetActionListener/>
+                                            </af:button>
+                                            <af:spacer width="10" height="10" id="s26"/>
+                                            <af:button text="Cancel" id="cb7"
+                                                       actionListener="#{backingBeanScope.AddEditTravelReq.onClickCancelPopup}"
+                                                      />
+                                        </af:toolbar>
+                                    </f:facet>
+                                </af:dialog>
+                            </af:popup>
+                            <!--<af:button actionListener="#{bindings.Rollback.execute}" text="Cancel"
+                                       disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b5">
+                                <af:resetActionListener/>
+                            </af:button>-->
+                            <af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
+                                       rendered="false" id="b4"/>
+                                       </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+                <af:spacer width="10" height="10" id="s3"/>
+                <af:panelBox id="pb2" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelFormLayout id="pfl1" maxColumns="2" rows="3" partialTriggers="b2">
+                        <af:inputText value="#{bindings.TravelRequestNo.inputValue}" readOnly="true"
+                                      label="#{bindings.TravelRequestNo.hints.label}"
+                                      required="#{bindings.TravelRequestNo.hints.mandatory}"
+                                      columns="#{bindings.TravelRequestNo.hints.displayWidth}"
+                                      maximumLength="#{bindings.TravelRequestNo.hints.precision}"
+                                      shortDesc="#{bindings.TravelRequestNo.hints.tooltip}" id="it1"
+                                      contentStyle="width:200px;"
+                                      disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}">
+                            <f:validator binding="#{bindings.TravelRequestNo.validator}"/>
+                        </af:inputText>
+                        <af:outputText value="#{bindings.IntroLtrHdrId.inputValue}" rendered="false"
+                                       shortDesc="#{bindings.IntroLtrHdrId.hints.tooltip}" id="ot2">
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.IntroLtrHdrId.format}"/>
+                        </af:outputText>
+                        <af:inputText value="#{bindings.Trans_EmpNo.inputValue}"
+                                      label="#{bindings.Trans_EmpNo.hints.label}"
+                                      required="#{bindings.Trans_EmpNo.hints.mandatory}" disabled="true"
+                                      columns="#{bindings.Trans_EmpNo.hints.displayWidth}"
+                                      maximumLength="#{bindings.Trans_EmpNo.hints.precision}"
+                                      shortDesc="#{bindings.Trans_EmpNo.hints.tooltip}"
+                                      partialTriggers="trans_EmpNameId" id="it2" contentStyle="width:230px;">
+                            <f:validator binding="#{bindings.Trans_EmpNo.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Trans_EmailId.inputValue}"
+                                      label="#{bindings.Trans_EmailId.hints.label}"
+                                      required="#{bindings.Trans_EmailId.hints.mandatory}"
+                                      columns="#{bindings.Trans_EmailId.hints.displayWidth}" disabled="true"
+                                      maximumLength="#{bindings.Trans_EmailId.hints.precision}"
+                                      shortDesc="#{bindings.Trans_EmailId.hints.tooltip}"
+                                      partialTriggers="trans_EmpNameId" id="it3" contentStyle="width:230px;">
+                            <f:validator binding="#{bindings.Trans_EmailId.validator}"/>
+                        </af:inputText>
+                        <af:selectOneChoice value="#{bindings.TravelPurposeCode.inputValue}"
+                                            label="#{bindings.TravelPurposeCode.label}" autoSubmit="true"
+                                            contentStyle="width:230px;"
+                                            valuePassThru="true" valueChangeListener="#{backingBeanScope.AddEditTravelReq.valChangeTravelPurpose}"
+                                            disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                            required="#{bindings.TravelPurposeCode.hints.mandatory}"
+                                            shortDesc="#{bindings.TravelPurposeCode.hints.tooltip}" id="soc1">
+                            <f:selectItems value="#{bindings.TravelPurposeCode.items}" id="si1"/>
+                            <f:validator binding="#{bindings.TravelPurposeCode.validator}"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.Trans_BusinessGroup.inputValue}"
+                                      label="#{bindings.Trans_BusinessGroup.hints.label}" disabled="true"
+                                      contentStyle="width:230px;"
+                                      required="#{bindings.Trans_BusinessGroup.hints.mandatory}"
+                                      columns="#{bindings.Trans_BusinessGroup.hints.displayWidth}"
+                                      maximumLength="#{bindings.Trans_BusinessGroup.hints.precision}"
+                                      shortDesc="#{bindings.Trans_BusinessGroup.hints.tooltip}" id="it4"
+                                      partialTriggers="trans_EmpNameId">
+                            <f:validator binding="#{bindings.Trans_BusinessGroup.validator}"/>
+                        </af:inputText>
+                        <af:inputComboboxListOfValues id="trans_EmpNameId"
+                                                      popupTitle="Search and Select: #{bindings.Trans_EmpName.hints.label}"
+                                                      value="#{bindings.Trans_EmpName.inputValue}"
+                                                      label="#{bindings.Trans_EmpName.hints.label}" autoSubmit="true"
+                                                      contentStyle="width:200px;"
+                                                      disabled="#{sessionScope.reqPurpose eq 'self' || bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                                      model="#{bindings.Trans_EmpName.listOfValuesModel}"
+                                                      required="#{bindings.Trans_EmpName.hints.mandatory}"
+                                                      columns="#{bindings.Trans_EmpName.hints.displayWidth}"
+                                                      shortDesc="#{bindings.Trans_EmpName.hints.tooltip}">
+                            <f:validator binding="#{bindings.Trans_EmpName.validator}"/>
+                        </af:inputComboboxListOfValues>
+                        <af:inputComboboxListOfValues id="trans_CountryId"
+                                                      popupTitle="Search and Select: #{bindings.Trans_Country.hints.label}"
+                                                      value="#{bindings.Trans_Country.inputValue}"
+                                                      label="#{bindings.Trans_Country.hints.label}" autoSubmit="true"
+                                                      contentStyle="width:200px;"
+                                                      model="#{bindings.Trans_Country.listOfValuesModel}"
+                                                      required="#{bindings.Trans_Country.hints.mandatory}"
+                                                      disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                                      columns="#{bindings.Trans_Country.hints.displayWidth}"
+                                                      shortDesc="#{bindings.Trans_Country.hints.tooltip}">
+                            <f:validator binding="#{bindings.Trans_Country.validator}"/>
+                        </af:inputComboboxListOfValues>
+                        <af:panelLabelAndMessage label="#{bindings.ApprovedStatus.hints.label}" id="plam1">
+                            <af:outputText value="#{bindings.ApprovedStatus.inputValue}"
+                             inlineStyle="color:#{(bindings.ApprovedStatus.inputValue eq 'APPROVED')?'green':(bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL')?'orange':(bindings.ApprovedStatus.inputValue eq 'DRAFT') ? 'black' : 'red'};"
+                                           shortDesc="#{bindings.ApprovedStatus.hints.tooltip}" id="ot3"/>
+                        </af:panelLabelAndMessage>
+                        <af:inputText value="#{bindings.Remarks.inputValue}" label="#{bindings.Remarks.hints.label}"
+                                      required="#{bindings.Remarks.hints.mandatory}"
+                                      columns="#{bindings.Remarks.hints.displayWidth}"
+                                      disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                      maximumLength="#{bindings.Remarks.hints.precision}"
+                                      shortDesc="#{bindings.Remarks.hints.tooltip}" id="it7" rows="5">
+                            <f:validator binding="#{bindings.Remarks.validator}"/>
+                        </af:inputText>
+                        <af:inputText rendered="false" label="Purpose Code" value="#{bindings.TravelPurposeCode.inputValue}" id="it10"/>
+                    </af:panelFormLayout>
+                </af:panelBox>
+                <af:spacer width="10" height="10" id="s5"/>
+                <af:spacer width="10" height="10" id="s6"/>
+                <af:panelBox id="pb3" showDisclosure="false" inlineStyle="border-color:transparent;">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" >
+                                <af:link id="cil3" icon="/images/func_add_16_ena.png"
+                                rendered="false"
+                                         actionListener="#{backingBeanScope.AddEditTravelReq.onClickAdd}"
+                                          disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                         hoverIcon="/images/func_add_16_hov.png" partialSubmit="true"></af:link>
+                                <af:spacer width="10" height="10" id="s7"/>
+                                <af:link icon="/images/func_remove_16_ena.png"
+                                         hoverIcon="/images/func_remove_16_hov.png"
+                                         depressedIcon="/images/func_report_16_act.png"
+                                         actionListener="#{backingBeanScope.AddEditTravelReq.onClickDelete}"
+                                           disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                         disabledIcon="/images/func_remove_16_dis.png" partialSubmit="true" id="l1"></af:link>
+                                <af:button actionListener="#{backingBeanScope.AddEditTravelReq.onClickAdd}" text="Add" rendered="false"
+                                           disabled="#{!bindings.CreateInsert1.enabled}" id="b6"/>
+                                <af:spacer width="10" height="10" id="s4"/>
+                                <af:button rendered="false" text="Delete" id="b5"
+                                 disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                           actionListener="#{backingBeanScope.AddEditTravelReq.onClickDelete}"/>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.IntroLtrLines_VO.collectionModel}" var="row"
+                                  rows="#{bindings.IntroLtrLines_VO.rangeSize}"
+                                  emptyText="#{bindings.IntroLtrLines_VO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" 
+                                  selectedRowKeys="#{bindings.IntroLtrLines_VO.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.IntroLtrLines_VO.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.IntroLtrLines_VO.rangeSize}" id="t1"
+                                  binding="#{backingBeanScope.AddEditTravelReq.lineTable}"
+                                  partialTriggers=":::soc1 :::b2">
+                            <af:column headerText="Select" id="c9" width="50" align="center">
+                                <af:selectBooleanCheckbox value="#{row.bindings.Trans_Select.inputValue}"
+                                  disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                                          shortDesc="#{bindings.IntroLtrLines_VO.hints.Trans_Select.tooltip}"
+                                                          id="sbc1" autoSubmit="true"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrLines_VO.hints.ReleationTypeCode.label}" id="c1"
+                                       width="150">
+                                <af:selectOneChoice value="#{row.bindings.ReleationTypeCode.inputValue}"
+                                                    label="#{row.bindings.ReleationTypeCode.label}"
+                                                    required="#{bindings.IntroLtrLines_VO.hints.ReleationTypeCode.mandatory}"
+                                                    shortDesc="#{bindings.IntroLtrLines_VO.hints.ReleationTypeCode.tooltip}"
+                                                    id="soc2" autoSubmit="true" disabled="true"
+                                                    valueChangeListener="#{backingBeanScope.AddEditTravelReq.relationTypeValueChange}">
+                                    <f:selectItems value="#{row.bindings.ReleationTypeCode.items}" id="si2"/>
+                                    <f:validator binding="#{row.bindings.ReleationTypeCode.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column headerText="Full Name" id="c8" width="150">
+                                <af:inputText value="#{row.bindings.DependentFullName.inputValue ne null ? row.bindings.DependentFullName.inputValue : row.bindings.EmployeeFullName.inputValue}"
+                                              label="Dependent Full Name" autoSubmit="true" disabled="true"
+                                              required="#{bindings.IntroLtrLines_VO.hints.DependentFullName.mandatory}"
+                                              columns="#{bindings.IntroLtrLines_VO.hints.DependentFullName.displayWidth}"
+                                              maximumLength="#{bindings.IntroLtrLines_VO.hints.DependentFullName.precision}"
+                                              shortDesc="#{bindings.IntroLtrLines_VO.hints.DependentFullName.tooltip}"
+                                              id="it9">
+                                    <f:validator binding="#{row.bindings.DependentFullName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrLines_VO.hints.EmployeeFullName.label}" id="c2"
+                                       rendered="false">
+                                <af:inputText value="#{row.bindings.EmployeeFullName.inputValue}"
+                                  disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                              label="#{bindings.IntroLtrLines_VO.hints.EmployeeFullName.label}"
+                                              required="#{bindings.IntroLtrLines_VO.hints.EmployeeFullName.mandatory}"
+                                              columns="#{bindings.IntroLtrLines_VO.hints.EmployeeFullName.displayWidth}"
+                                              maximumLength="#{bindings.IntroLtrLines_VO.hints.EmployeeFullName.precision}"
+                                              shortDesc="#{bindings.IntroLtrLines_VO.hints.EmployeeFullName.tooltip}"
+                                              id="it8">
+                                    <f:validator binding="#{row.bindings.EmployeeFullName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrLines_VO.hints.DateOfBirth.label}" id="c3"
+                                       width="150">
+                                <af:inputDate value="#{row.bindings.DateOfBirth.inputValue}" disabled="true"
+                                              label="#{bindings.IntroLtrLines_VO.hints.DateOfBirth.label}"
+                                              required="#{bindings.IntroLtrLines_VO.hints.DateOfBirth.mandatory}"
+                                              columns="#{bindings.IntroLtrLines_VO.hints.DateOfBirth.displayWidth}"
+                                              shortDesc="#{bindings.IntroLtrLines_VO.hints.DateOfBirth.tooltip}"
+                                              id="id1" binding="#{backingBeanScope.AddEditTravelReq.dob}">
+                                    <f:validator binding="#{row.bindings.DateOfBirth.validator}"/>
+                                   <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrLines_VO.hints.PlaceBirth.label}" id="c4"
+                                       width="150">
+                                <af:inputText value="#{row.bindings.PlaceBirth.inputValue}" 
+                                disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                              label="#{bindings.IntroLtrLines_VO.hints.PlaceBirth.label}"
+                                              required="#{bindings.IntroLtrLines_VO.hints.PlaceBirth.mandatory}"
+                                              columns="#{bindings.IntroLtrLines_VO.hints.PlaceBirth.displayWidth}"
+                                              maximumLength="#{bindings.IntroLtrLines_VO.hints.PlaceBirth.precision}"
+                                              shortDesc="#{bindings.IntroLtrLines_VO.hints.PlaceBirth.tooltip}" id="it5"
+                                              binding="#{backingBeanScope.AddEditTravelReq.palceOfBirth}">
+                                    <f:validator binding="#{row.bindings.PlaceBirth.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrLines_VO.hints.PassportNo.label}" id="c5"
+                                       width="150">
+                                <af:inputText value="#{row.bindings.PassportNo.inputValue}"
+                                   disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                              label="#{bindings.IntroLtrLines_VO.hints.PassportNo.label}"
+                                              required="#{bindings.IntroLtrLines_VO.hints.PassportNo.mandatory}"
+                                              columns="#{bindings.IntroLtrLines_VO.hints.PassportNo.displayWidth}"
+                                              maximumLength="#{bindings.IntroLtrLines_VO.hints.PassportNo.precision}"
+                                              shortDesc="#{bindings.IntroLtrLines_VO.hints.PassportNo.tooltip}" id="it6"
+                                              binding="#{backingBeanScope.AddEditTravelReq.passportNo}">
+                                    <f:validator binding="#{row.bindings.PassportNo.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrLines_VO.hints.PassportIssueDate.label}" id="c7"
+                                       width="150">
+                                <af:inputDate value="#{row.bindings.PassportIssueDate.inputValue}"
+                                  disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                              label="#{bindings.IntroLtrLines_VO.hints.PassportIssueDate.label}"
+                                              required="#{bindings.IntroLtrLines_VO.hints.PassportIssueDate.mandatory}"
+                                              columns="#{bindings.IntroLtrLines_VO.hints.PassportIssueDate.displayWidth}"
+                                              shortDesc="#{bindings.IntroLtrLines_VO.hints.PassportIssueDate.tooltip}"
+                                              id="id3" binding="#{backingBeanScope.AddEditTravelReq.passportIssueDate}">
+                                    <f:validator binding="#{row.bindings.PassportIssueDate.validator}"/>
+                                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrLines_VO.hints.PassportEndDate.label}" id="c6"
+                                       width="150">
+                                <af:inputDate value="#{row.bindings.PassportEndDate.inputValue}"
+                                 disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                              label="#{bindings.IntroLtrLines_VO.hints.PassportEndDate.label}"
+                                              required="#{bindings.IntroLtrLines_VO.hints.PassportEndDate.mandatory}"
+                                              columns="#{bindings.IntroLtrLines_VO.hints.PassportEndDate.displayWidth}"
+                                              shortDesc="#{bindings.IntroLtrLines_VO.hints.PassportEndDate.tooltip}"
+                                              id="id2" binding="#{backingBeanScope.AddEditTravelReq.passportEndDate}">
+                                    <f:validator binding="#{row.bindings.PassportEndDate.validator}"/>
+                                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrLines_VO.hints.ProTravelDate.label}" width="150"
+                                       id="c10" >
+                                <af:inputDate value="#{row.bindings.ProTravelDate.inputValue}"
+                                   disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                              label="#{bindings.IntroLtrLines_VO.hints.ProTravelDate.label}"
+                                              minValue="#{backingBeanScope.AddEditTravelReq.minDate}"
+                                              columns="#{bindings.IntroLtrLines_VO.hints.ProTravelDate.displayWidth}"
+                                              shortDesc="#{bindings.IntroLtrLines_VO.hints.ProTravelDate.tooltip}"
+                                              id="id4"
+                                              >
+                                    <f:validator binding="#{row.bindings.ProTravelDate.validator}"/>
+                                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                </af:inputDate>
+                            </af:column>
+                            <af:column headerText="#{bindings.IntroLtrLines_VO.hints.ExpReturnDate.label}" width="150"  id="c11">
+                                <af:inputDate value="#{row.bindings.ExpReturnDate.inputValue}"
+                                  disabled="#{bindings.ApprovedStatus.inputValue eq 'SUBMITTED FOR APPROVAL' || bindings.ApprovedStatus.inputValue eq 'APPROVED' || bindings.ApprovedStatus.inputValue eq 'REJECTED'? true : false}"
+                                              label="#{bindings.IntroLtrLines_VO.hints.ExpReturnDate.label}"
+                                              minValue="#{backingBeanScope.AddEditTravelReq.minDate}" 
+                                              columns="#{bindings.IntroLtrLines_VO.hints.ExpReturnDate.displayWidth}"
+                                              shortDesc="#{bindings.IntroLtrLines_VO.hints.ExpReturnDate.tooltip}"
+                                              id="id5">
+                                    <f:validator binding="#{row.bindings.ExpReturnDate.validator}"/>
+                                    <af:convertDateTime pattern="dd-MM-yyyy"/>
+                                </af:inputDate>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelBox>
+            </af:panelBox>
+        </f:facet>
+        <f:facet name="footerStart"/>
+        <f:facet name="footer"/>
+        <f:facet name="footerEnd"/>
+        <f:facet name="startPanel"/>
+        <f:facet name="endPanel"/>
+        <f:facet name="headerStart"/>
+        <f:facet name="header"/>
+        <f:facet name="headerEnd"/>
+    </af:pageTemplate>
+</jsp:root>

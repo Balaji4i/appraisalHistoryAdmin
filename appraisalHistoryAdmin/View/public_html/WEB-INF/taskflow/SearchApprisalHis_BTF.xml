@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SearchApprisalHis_BTF">
+    <default-activity>filter</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__11">
+      <managed-bean-name>FilmStrip</managed-bean-name>
+      <managed-bean-class>com.view.beans.filmStrip.UtilsBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__13">
+      <managed-bean-name>headerId</managed-bean-name>
+      <managed-bean-class>java.math.BigDecimal</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__14">
+      <managed-bean-name>mode</managed-bean-name>
+      <managed-bean-class>java.lang.String</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__12">
+      <managed-bean-name>SearchApprisalHist</managed-bean-name>
+      <managed-bean-class>view.SearchApprisalHist</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchApprisalHis">
+      <page>/fragment/SearchApprisalHis.jsff</page>
+    </view>
+    <method-call id="HideFilmStrip">
+      <method>#{backingBeanScope.FilmStrip._hideFilmStrip}</method>
+      <outcome>
+        <fixed-outcome>hide</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ShowFilmStrip">
+      <method>#{backingBeanScope.FilmStrip._showFilmStrip}</method>
+      <outcome>
+        <fixed-outcome>show</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="AddEditApprisalHis_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/AddEditApprisalHis_BTF.xml</document>
+        <id>AddEditApprisalHis_BTF</id>
+      </task-flow-reference>
+      
+     
+      
+      
+      <!--<input-parameter id="__24">
+        <name>EmployeeNumber1</name>
+        <value>#{pageFlowScope.EmployeeNumber1}</value>
+      </input-parameter>
+      <input-parameter id="__25">
+        <name>PlanName1</name>
+        <value>#{pageFlowScope.PlanName1}</value>
+      </input-parameter>-->
+      <input-parameter id="__15">
+        <name>EmployeeNumber</name>
+        <value>#{pageFlowScope.EmployeeNumber1}</value>
+      </input-parameter>
+      <input-parameter id="__18">
+        <name>PlanName</name>
+        <value>#{pageFlowScope.PlanName1}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="filter">
+      <method>#{bindings.filter.execute}</method>
+      <outcome>
+        <fixed-outcome>filter</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>SearchApprisalHis</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>addEdit</from-outcome>
+        <to-activity-id>HideFilmStrip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>HideFilmStrip</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>hide</from-outcome>
+        <to-activity-id>AddEditApprisalHis_BTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>ShowFilmStrip</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>show</from-outcome>
+        <to-activity-id>SearchApprisalHis</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>filter</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>filter</from-outcome>
+        <to-activity-id>SearchApprisalHis</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>AddEditApprisalHis_BTF</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>ShowFilmStrip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

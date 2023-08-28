@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.9.14" id="SearchApprisalHisPageDef"
+                Package="fragment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+   <!--<variableUsage DataControl="Oando_AMDataControl" Binds="PlanNameROVO.variablesMap.b_empnum"
+                     Name="ExecuteWithParams_b_empnum" IsQueriable="false"/>-->
+    </variableIterator>
+    <iterator Binds="ApprisalHisHdr_VO" RangeSize="6" DataControl="Oando_AMDataControl"
+              id="ApprisalHisHdr_VOIterator"/>
+    <iterator Binds="PlanNameROVO" RangeSize="25" DataControl="Oando_AMDataControl" id="PlanNameROVOIterator"/>
+    <searchRegion Criteria="search_VC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="ApprisalHisHdr_VOIterator" id="searchVCQuery1"/>
+    <iterator Binds="AppraisalHistHdr_V_ROVO1" RangeSize="6" DataControl="Oando_AMDataControl"
+              id="AppraisalHistHdr_V_ROVO1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="PlanNameROVOIterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <!--<NamedData NDName="b_empnum" NDType="java.lang.String" NDValue="${bindings.ExecuteWithParams_b_empnum}"/>-->
+      <NamedData NDName="BV_ID" NDType="java.math.BigDecimal"/>
+    </action>
+    <!--<attributeValues IterBinding="variables" id="b_empnum">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_b_empnum"/>
+      </AttrNames>
+    </attributeValues>-->
+    <tree IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="AppraisalHistHdr_V_ROVO1">
+      <nodeDefinition DefName="model.ro.AppraisalHistHdr_V_ROVO" Name="AppraisalHistHdr_V_ROVO10">
+        <AttrNames>
+          <Item Value="PlanName"/>
+          <Item Value="EmployeeNumber"/>
+          <Item Value="DisplayName"/>
+          <Item Value="Initiator"/>
+          <Item Value="AppraisalDate"/>
+          <Item Value="AppraisalPeriodStartDate"/>
+          <Item Value="AppraisalPeriodEndDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="AppraisalHistHdrId1">
+      <AttrNames>
+        <Item Value="AppraisalHistHdrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="EmployeeNumber1">
+      <AttrNames>
+        <Item Value="EmployeeNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AppraisalHistHdr_V_ROVO1Iterator" id="PlanName1">
+      <AttrNames>
+        <Item Value="PlanName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ApprisalHisHdr_VOIterator" StaticList="false" Uses="LOV_EmpNumTrans" id="EmpNumTrans"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ApprisalHisHdr_VOIterator" StaticList="false" Uses="LOV_PlanNameTrans" id="PlanNameTrans"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

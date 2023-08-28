@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="SearchTravelReq_BTF">
+    <default-activity>filterUser</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__9">
+      <managed-bean-name>SearchTravelReq</managed-bean-name>
+      <managed-bean-class>view.SearchTravelReq</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__10">
+      <managed-bean-name>FilmStrip</managed-bean-name>
+      <managed-bean-class>com.view.beans.filmStrip.UtilsBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="SearchTravelReq">
+      <page>/fragment/SearchTravelReq.jsff</page>
+    </view>
+    <task-flow-call id="AddEditTravelRequest_BTF">
+      <task-flow-reference>
+        <document>/WEB-INF/taskflow/AddEditTravelRequest_BTF.xml</document>
+        <id>AddEditTravelRequest_BTF</id>
+      </task-flow-reference>
+      <input-parameter id="__3">
+        <name>mode</name>
+        <value>#{pageFlowScope.mode}</value>
+      </input-parameter>
+      <input-parameter id="__4">
+        <name>headerId</name>
+        <value>#{pageFlowScope.headerId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <method-call id="Execute">
+      <method>#{bindings.Execute.execute}</method>
+      <outcome>
+        <fixed-outcome>Execute</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="HideFilmStrip">
+      <method>#{backingBeanScope.FilmStrip._hideFilmStrip}</method>
+      <outcome>
+        <fixed-outcome>hide</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ShowFilmStrip">
+      <method>#{backingBeanScope.FilmStrip._showFilmStrip}</method>
+      <outcome>
+        <fixed-outcome>show</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="filterUser">
+      <method>#{bindings.filterUser.execute}</method>
+      <outcome>
+        <fixed-outcome>filterUser</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>SearchTravelReq</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>addEdit</from-outcome>
+        <to-activity-id>HideFilmStrip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>AddEditTravelRequest_BTF</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>Execute</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>Execute</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>Execute</from-outcome>
+        <to-activity-id>ShowFilmStrip</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>HideFilmStrip</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>hide</from-outcome>
+        <to-activity-id>AddEditTravelRequest_BTF</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>ShowFilmStrip</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>show</from-outcome>
+        <to-activity-id>SearchTravelReq</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id>filterUser</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome>filterUser</from-outcome>
+        <to-activity-id>SearchTravelReq</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>
